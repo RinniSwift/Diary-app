@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -183,25 +183,35 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KzW-pC-KBf">
-                                <rect key="frame" x="15" y="110" width="345" height="557"/>
+                                <rect key="frame" x="15" y="110" width="345" height="512"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEZ-QJ-HDA">
+                                <rect key="frame" x="319" y="622" width="41" height="42"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                <state key="normal" title="Note!">
+                                    <color key="titleColor" red="0.59215686270000001" green="0.58823529409999997" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="KzW-pC-KBf" firstAttribute="top" secondItem="4Da-Ww-Dud" secondAttribute="bottom" constant="25" id="2SN-xg-V3o"/>
+                            <constraint firstItem="40y-Yp-Jwd" firstAttribute="trailing" secondItem="IEZ-QJ-HDA" secondAttribute="trailing" constant="15" id="6BB-O7-pfD"/>
+                            <constraint firstItem="40y-Yp-Jwd" firstAttribute="bottom" secondItem="KzW-pC-KBf" secondAttribute="bottom" constant="45" id="807-05-vDV"/>
                             <constraint firstItem="IGj-TT-ArQ" firstAttribute="top" secondItem="40y-Yp-Jwd" secondAttribute="top" constant="35" id="AuK-ZG-w3N"/>
                             <constraint firstItem="IGj-TT-ArQ" firstAttribute="centerX" secondItem="m35-We-20r" secondAttribute="centerX" id="BGL-Q2-6Dp"/>
                             <constraint firstItem="4Da-Ww-Dud" firstAttribute="top" secondItem="40y-Yp-Jwd" secondAttribute="top" constant="35" id="NgG-6V-bI9"/>
                             <constraint firstItem="IGj-TT-ArQ" firstAttribute="leading" secondItem="4Da-Ww-Dud" secondAttribute="trailing" constant="28" id="Pub-UQ-VjX"/>
+                            <constraint firstItem="40y-Yp-Jwd" firstAttribute="bottom" secondItem="IEZ-QJ-HDA" secondAttribute="bottom" constant="3" id="WvB-7P-0Pb"/>
                             <constraint firstItem="40y-Yp-Jwd" firstAttribute="trailing" secondItem="KzW-pC-KBf" secondAttribute="trailing" constant="15" id="blh-2m-RRA"/>
-                            <constraint firstItem="KzW-pC-KBf" firstAttribute="leading" secondItem="40y-Yp-Jwd" secondAttribute="leading" constant="15" id="fux-O6-DzE"/>
+                            <constraint firstItem="KzW-pC-KBf" firstAttribute="leading" secondItem="40y-Yp-Jwd" secondAttribute="leading" constant="15" id="nLt-0B-BrT"/>
                             <constraint firstItem="4Da-Ww-Dud" firstAttribute="leading" secondItem="40y-Yp-Jwd" secondAttribute="leading" constant="15" id="p33-54-V5J"/>
-                            <constraint firstItem="KzW-pC-KBf" firstAttribute="bottom" secondItem="40y-Yp-Jwd" secondAttribute="bottom" id="rIP-Xv-dA7"/>
+                            <constraint firstItem="IEZ-QJ-HDA" firstAttribute="top" secondItem="KzW-pC-KBf" secondAttribute="bottom" id="sNY-Ar-gCE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="40y-Yp-Jwd"/>
                     </view>

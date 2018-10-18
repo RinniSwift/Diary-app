@@ -19,6 +19,12 @@ class DiaryMain: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        textView.text = ""
+        
+    }
+    
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        // function to pass data to the ViewController page
