@@ -9,16 +9,21 @@
 import Foundation
 import UIKit
 
-class DiaryMain: UIViewController, UIGestureRecognizerDelegate {
+class DiaryMain: UIViewController {
     
-//    var UITapRecognizer = UITapGestureRecognizer(target: self, action: "imageTapped:")
-//    UITapRecognizer.delegate = self
-//    
-//    @IBOutlet weak var backButtonImage: UIImageView!
-//    
-//    
-//    
-//    func imageTapped() {
-//        print("image tapped!")
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var textView: UITextView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // function to pass data to the ViewController page
+////        let segue = segue.destination as! ViewController
+//        return
 //    }
+    
 }

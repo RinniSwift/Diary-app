@@ -142,6 +142,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1L4-tE-nW2"/>
                     </view>
+                    <navigationItem key="navigationItem" id="n8n-nM-Qk2"/>
                     <connections>
                         <outlet property="calendarView" destination="tHl-jA-KoQ" id="ZIa-7d-WOF"/>
                         <outlet property="month" destination="FO4-7s-Rci" id="sQT-ES-67p"/>
@@ -161,37 +162,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yt9-fz-q88">
-                                <rect key="frame" x="15" y="35" width="345" height="35"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backButton" translatesAutoresizingMaskIntoConstraints="NO" id="Y3W-90-5zh">
-                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="35" id="j2g-2s-rjp"/>
-                                            <constraint firstAttribute="height" constant="35" id="yf5-Lf-P62"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wednesday, October 17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGj-TT-ArQ">
-                                        <rect key="frame" x="45" y="0.0" width="300" height="35"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
-                                        <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Da-Ww-Dud">
+                                <rect key="frame" x="15" y="55" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="0w3-a6-9Ir"/>
+                                    <constraint firstAttribute="height" constant="30" id="QaJ-em-YSc"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="backButton"/>
+                                <connections>
+                                    <segue destination="g3F-vj-Pjh" kind="unwind" unwindAction="unwindToCalendar:" id="CQv-PA-JNI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wednesday, October 17" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGj-TT-ArQ">
+                                <rect key="frame" x="73" y="55" width="229" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="P6b-vf-4EY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KzW-pC-KBf">
+                                <rect key="frame" x="15" y="110" width="345" height="557"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="yt9-fz-q88" firstAttribute="top" secondItem="40y-Yp-Jwd" secondAttribute="top" constant="15" id="d5a-2n-2Tv"/>
-                            <constraint firstItem="yt9-fz-q88" firstAttribute="leading" secondItem="40y-Yp-Jwd" secondAttribute="leading" constant="15" id="kSW-al-hrm"/>
-                            <constraint firstItem="40y-Yp-Jwd" firstAttribute="trailing" secondItem="yt9-fz-q88" secondAttribute="trailing" constant="15" id="yE2-JW-k7C"/>
+                            <constraint firstItem="KzW-pC-KBf" firstAttribute="top" secondItem="4Da-Ww-Dud" secondAttribute="bottom" constant="25" id="2SN-xg-V3o"/>
+                            <constraint firstItem="IGj-TT-ArQ" firstAttribute="top" secondItem="40y-Yp-Jwd" secondAttribute="top" constant="35" id="AuK-ZG-w3N"/>
+                            <constraint firstItem="IGj-TT-ArQ" firstAttribute="centerX" secondItem="m35-We-20r" secondAttribute="centerX" id="BGL-Q2-6Dp"/>
+                            <constraint firstItem="4Da-Ww-Dud" firstAttribute="top" secondItem="40y-Yp-Jwd" secondAttribute="top" constant="35" id="NgG-6V-bI9"/>
+                            <constraint firstItem="IGj-TT-ArQ" firstAttribute="leading" secondItem="4Da-Ww-Dud" secondAttribute="trailing" constant="28" id="Pub-UQ-VjX"/>
+                            <constraint firstItem="40y-Yp-Jwd" firstAttribute="trailing" secondItem="KzW-pC-KBf" secondAttribute="trailing" constant="15" id="blh-2m-RRA"/>
+                            <constraint firstItem="KzW-pC-KBf" firstAttribute="leading" secondItem="40y-Yp-Jwd" secondAttribute="leading" constant="15" id="fux-O6-DzE"/>
+                            <constraint firstItem="4Da-Ww-Dud" firstAttribute="leading" secondItem="40y-Yp-Jwd" secondAttribute="leading" constant="15" id="p33-54-V5J"/>
+                            <constraint firstItem="KzW-pC-KBf" firstAttribute="bottom" secondItem="40y-Yp-Jwd" secondAttribute="bottom" id="rIP-Xv-dA7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="40y-Yp-Jwd"/>
                     </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="IGj-TT-ArQ" id="sGB-81-1Lc"/>
+                        <outlet property="textView" destination="KzW-pC-KBf" id="s95-xU-8xn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXb-So-i5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="g3F-vj-Pjh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="872.79999999999995" y="133.5832083958021"/>
+            <point key="canvasLocation" x="1077.5999999999999" y="133.5832083958021"/>
         </scene>
     </scenes>
     <resources>

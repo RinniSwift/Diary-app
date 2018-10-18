@@ -17,6 +17,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var month: UILabel!
+    
+    @IBAction func unwindToCalendar(_ sender: UIStoryboardSegue) {
+        // for the unwind segue in DiaryMain storyboard
+    }
 
 
     override func viewDidLoad() {
@@ -88,6 +92,13 @@ extension ViewController: JTAppleCalendarViewDataSource {
         return parameters
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // pass information to the DiaryMain storyboard
+//        let destination = segue.destination as! DiaryMain
+    }
+    
+    
+    
 }
 
 extension ViewController: JTAppleCalendarViewDelegate {
@@ -109,6 +120,7 @@ extension ViewController: JTAppleCalendarViewDelegate {
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         
+        // perform segue once tapped on cell
         performSegue(withIdentifier: "toDiaryMain", sender: self)
         
     }
