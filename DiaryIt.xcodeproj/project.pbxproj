@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3F042D33FBB6B49495AB60BB /* Pods_DiaryIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85423F73570C79B35DBF6904 /* Pods_DiaryIt.framework */; };
+		A437C5CB217904F7003430E0 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A437C5CA217904F7003430E0 /* Notes.swift */; };
+		A437C5CD21794E22003430E0 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A437C5CC21794E22003430E0 /* CoreDataHelper.swift */; };
 		A44CBC402178195A00B95854 /* DiaryMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44CBC3F2178195A00B95854 /* DiaryMain.swift */; };
 		A45C41C721768C160071A7D7 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C41C621768C160071A7D7 /* CustomCell.swift */; };
 		A45C41CB2176A5030071A7D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A45C41CA2176A5030071A7D7 /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 /* Begin PBXFileReference section */
 		48028C051D8F050EB161C742 /* Pods-DiaryIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DiaryIt/Pods-DiaryIt.debug.xcconfig"; sourceTree = "<group>"; };
 		85423F73570C79B35DBF6904 /* Pods_DiaryIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiaryIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A437C5CA217904F7003430E0 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
+		A437C5CC21794E22003430E0 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		A44CBC3F2178195A00B95854 /* DiaryMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMain.swift; sourceTree = "<group>"; };
 		A45C41C621768C160071A7D7 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		A45C41CA2176A5030071A7D7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				A4AD47F921766CFA006E9ABE /* Constants.swift */,
+				A437C5CA217904F7003430E0 /* Notes.swift */,
 			);
 			path = ExtendedContant;
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 			children = (
 				A4AD47FB21767307006E9ABE /* GradientBackground.swift */,
 				A45C41C621768C160071A7D7 /* CustomCell.swift */,
+				A437C5CC21794E22003430E0 /* CoreDataHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -245,7 +251,9 @@
 				A4AD47EC21766BD0006E9ABE /* DiaryIt.xcdatamodeld in Sources */,
 				A44CBC402178195A00B95854 /* DiaryMain.swift in Sources */,
 				A45C41C721768C160071A7D7 /* CustomCell.swift in Sources */,
+				A437C5CD21794E22003430E0 /* CoreDataHelper.swift in Sources */,
 				A4AD47FA21766CFA006E9ABE /* Constants.swift in Sources */,
+				A437C5CB217904F7003430E0 /* Notes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

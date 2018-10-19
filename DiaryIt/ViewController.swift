@@ -31,6 +31,11 @@ class ViewController: UIViewController {
         
         // set calendar with numbers that are in the month
         setUpCalendarView()
+        
+        calendarView.scrollToDate(Date(), animateScroll: false)
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,6 +73,10 @@ class ViewController: UIViewController {
             validCell.dateLabel.textColor = UIColor.darkWhiteText
         }
     }
+    
+    func handleCellSelection(cell: CustomCell, cellState: CellState) {
+        cell.highlightDate.isHidden = false
+    }
 }
 
 extension ViewController: JTAppleCalendarViewDataSource {
@@ -86,15 +95,24 @@ extension ViewController: JTAppleCalendarViewDataSource {
         formatter.locale = Calendar.current.locale
         
         let startDate = formatter.date(from: "2018 01 01")!
-        let endDate = formatter.date(from: "2018 12 31")!
+//        let endDate = formatter.date(from: "2018 12 31")!
         
-        let parameters = ConfigurationParameters(startDate: startDate, endDate: endDate)
+        let parameters = ConfigurationParameters(startDate: startDate, endDate: Date())
         return parameters
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // pass information to the DiaryMain storyboard
 //        let destination = segue.destination as! DiaryMain
+        switch segue.identifier {
+        case "toDiaryMain":
+            let date = sender as? Date
+            let destination = segue.destination as! DiaryMain
+            destination.date = date
+        default: break
+        }
+        
+        
     }
     
     
@@ -109,6 +127,23 @@ extension ViewController: JTAppleCalendarViewDelegate {
         
         handleCellTextColor(view: cell, cellState: cellState)
         
+        
+        // * tracks the current date by tracking with a circle around it.
+        let todaysDate = Date()
+        
+        formatter.dateFormat = "yyyy MM dd"
+        
+        let todaysDateString = formatter.string(from: todaysDate)
+        let monthDateString = formatter.string(from: cellState.date)
+        
+        if todaysDateString == monthDateString {
+            handleCellSelection(cell: cell, cellState: cellState)
+            cell.dateLabel.textColor = UIColor.lightPurpleMainColor
+        }
+        // * end: tracks the current date by tracking with a circle around it.
+        
+        
+        
         return cell
     }
     
@@ -121,8 +156,18 @@ extension ViewController: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         
         // perform segue once tapped on cell
-        performSegue(withIdentifier: "toDiaryMain", sender: self)
+        performSegue(withIdentifier: "toDiaryMain", sender: date)
         
+        let inTheMonth = cellState.dateBelongsTo == .thisMonth
+        if inTheMonth {
+            print("date belongs to this month")
+        } else {
+            print("date does not belong to this month")
+        }
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        return
     }
     
 }

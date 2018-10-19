@@ -13,5 +13,6 @@ class CustomCell: JTAppleCell {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var selectedDateView: UIView!
+    @IBOutlet weak var highlightDate: UIView!
     
 }
