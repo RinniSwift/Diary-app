@@ -32,9 +32,9 @@ class ViewController: UIViewController {
         // set calendar with numbers that are in the month
         setUpCalendarView()
         
+        // set calender to initially be in this month and set it to be initially in the page of this date
         calendarView.scrollToDate(Date(), animateScroll: false)
-        
-        
+        calendarView.selectDates([Date()])
         
     }
 
@@ -43,7 +43,10 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
+    
     func setUpCalendarView() {
+        
         // makes the whole cell the outer most part of the cell
         calendarView.minimumLineSpacing = 0
         calendarView.minimumInteritemSpacing = 0
@@ -77,6 +80,7 @@ class ViewController: UIViewController {
     func handleCellSelection(cell: CustomCell, cellState: CellState) {
         cell.highlightDate.isHidden = false
     }
+    
 }
 
 extension ViewController: JTAppleCalendarViewDataSource {
@@ -129,17 +133,17 @@ extension ViewController: JTAppleCalendarViewDelegate {
         
         
         // * tracks the current date by tracking with a circle around it.
-        let todaysDate = Date()
-        
-        formatter.dateFormat = "yyyy MM dd"
-        
-        let todaysDateString = formatter.string(from: todaysDate)
-        let monthDateString = formatter.string(from: cellState.date)
-        
-        if todaysDateString == monthDateString {
-            handleCellSelection(cell: cell, cellState: cellState)
-            cell.dateLabel.textColor = UIColor.lightPurpleMainColor
-        }
+//        let todaysDate = Date()
+//
+//        formatter.dateFormat = "yyyy MM dd"
+//
+//        let todaysDateString = formatter.string(from: todaysDate)
+//        let monthDateString = formatter.string(from: cellState.date)
+//
+//        if todaysDateString == monthDateString {
+////            handleCellSelection(cell: cell, cellState: cellState)
+//            cell.dateLabel.textColor = UIColor.lightPurpleMainColor
+//        }
         // * end: tracks the current date by tracking with a circle around it.
         
         
@@ -157,13 +161,7 @@ extension ViewController: JTAppleCalendarViewDelegate {
         
         // perform segue once tapped on cell
         performSegue(withIdentifier: "toDiaryMain", sender: date)
-        
-        let inTheMonth = cellState.dateBelongsTo == .thisMonth
-        if inTheMonth {
-            print("date belongs to this month")
-        } else {
-            print("date does not belong to this month")
-        }
+
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {

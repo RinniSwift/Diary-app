@@ -43,7 +43,12 @@ class DiaryMain: UIViewController {
         textView.text = note?.content ?? ""
         dateLabel.text = date.toString()
         
-        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+        textView.keyboardDismissMode = .onDrag
     }
     
     
@@ -54,6 +59,7 @@ class DiaryMain: UIViewController {
 //    }
     
 }
+
 
 extension Date{
     
