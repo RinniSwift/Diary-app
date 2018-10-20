@@ -11,7 +11,15 @@ import JTAppleCalendar
 
 class ViewController: UIViewController {
     
-    let formatter = DateFormatter()
+    let formatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = Calendar.current.timeZone
+        dateFormatter.locale = Calendar.current.locale
+        dateFormatter.dateFormat = "yyyy MM dd"
+        return dateFormatter
+    }()
+    
+    
     let outsideMonthColor = UIColor.darkWhiteText
     
     @IBOutlet weak var calendarView: JTAppleCalendarView!
@@ -34,7 +42,11 @@ class ViewController: UIViewController {
         
         // set calender to initially be in this month and set it to be initially in the page of this date
         calendarView.scrollToDate(Date(), animateScroll: false)
-        calendarView.selectDates([Date()])
+        
+        
+        
+        // set it to the diary page of the day when opened
+//        calendarView.selectDates([Date()])
         
     }
 
@@ -53,19 +65,19 @@ class ViewController: UIViewController {
         
         // set up calendar labels to the correct month and year
         calendarView.visibleDates { (visibleDates) in
-            self.setUpViewsOfCalendar(from: visibleDates)
+            self.setUpViewsOfCalendar(visibleDates: visibleDates)
             
         }
     }
     
-    func setUpViewsOfCalendar(from visibleDates: DateSegmentInfo) {
-        let date = visibleDates.monthDates.first!.date
+    func setUpViewsOfCalendar(visibleDates: DateSegmentInfo) {
+        guard let date = visibleDates.monthDates.first?.date else { return }
         
-        self.formatter.dateFormat = "   yyyy"
-        self.year.text = self.formatter.string(from: date)
+        formatter.dateFormat = "   yyyy"
+        year.text = formatter.string(from: date)
         
-        self.formatter.dateFormat = " MMMM"
-        self.month.text = self.formatter.string(from: date)
+        formatter.dateFormat = " MMMM"
+        month.text = formatter.string(from: date)
     }
     
     func handleCellTextColor(view: JTAppleCell?, cellState: CellState) {
@@ -77,8 +89,10 @@ class ViewController: UIViewController {
         }
     }
     
+    // *** make circle show under date
     func handleCellSelection(cell: CustomCell, cellState: CellState) {
-        cell.highlightDate.isHidden = false
+        cell.circleUnderDate.isHidden = false
+        cell.circleUnderDate.backgroundColor = UIColor.white
     }
     
 }
@@ -87,7 +101,9 @@ extension ViewController: JTAppleCalendarViewDataSource {
     
     
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
+        
         return
+        
     }
     
     
@@ -127,33 +143,36 @@ extension ViewController: JTAppleCalendarViewDelegate {
     
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCell
+        
+        // sets date label to the correct number
         cell.dateLabel.text = cellState.text
         
         handleCellTextColor(view: cell, cellState: cellState)
         
         
         // * tracks the current date by tracking with a circle around it.
-//        let todaysDate = Date()
-//
-//        formatter.dateFormat = "yyyy MM dd"
-//
-//        let todaysDateString = formatter.string(from: todaysDate)
-//        let monthDateString = formatter.string(from: cellState.date)
-//
-//        if todaysDateString == monthDateString {
-////            handleCellSelection(cell: cell, cellState: cellState)
-//            cell.dateLabel.textColor = UIColor.lightPurpleMainColor
-//        }
-        // * end: tracks the current date by tracking with a circle around it.
+        let todaysDate = Date()
+        
+        formatter.dateFormat = "yyyy MM dd"
+        
+        let todaysDateString = formatter.string(from: todaysDate)
+        let monthDateString = formatter.string(from: cellState.date)
         
         
+        
+        if monthDateString == todaysDateString {
+            handleCellSelection(cell: cell, cellState: cellState)
+        } else {
+            cell.circleUnderDate.isHidden = true
+        }
+        // * end: tracks the current date by tracking with a circle around it
         
         return cell
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         
-        setUpViewsOfCalendar(from: visibleDates)
+        setUpViewsOfCalendar(visibleDates: visibleDates)
         
     }
     
@@ -165,7 +184,9 @@ extension ViewController: JTAppleCalendarViewDelegate {
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        
         return
+        
     }
     
 }
