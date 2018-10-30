@@ -11,6 +11,7 @@ import JTAppleCalendar
 
 class ViewController: UIViewController {
     
+    
     let formatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = Calendar.current.timeZone
@@ -18,6 +19,8 @@ class ViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy MM dd"
         return dateFormatter
     }()
+    
+    
     
     
     let outsideMonthColor = UIColor.darkWhiteText

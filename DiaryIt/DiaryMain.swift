@@ -21,6 +21,7 @@ class DiaryMain: UIViewController {
         if noteAtIndex?.content != nil {
             noteAtIndex?.content = textView.text
             CoreDataHelper.saveNote()
+            
         }
         
         let note = CoreDataHelper.newNote()
@@ -32,6 +33,7 @@ class DiaryMain: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
     }
     
@@ -57,6 +59,9 @@ class DiaryMain: UIViewController {
 ////        let segue = segue.destination as! ViewController
 //        return
 //    }
+    
+    
+    
     
 }
 
