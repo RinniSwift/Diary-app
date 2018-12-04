@@ -94,8 +94,13 @@ class ViewController: UIViewController {
     
     // *** make circle show under date
     func handleCellSelection(cell: CustomCell, cellState: CellState) {
-        cell.circleUnderDate.isHidden = false
-        cell.circleUnderDate.backgroundColor = UIColor.white
+        
+        if cell.dateLabel.textColor == UIColor.brightWhite {
+            cell.circleUnderDate.isHidden = false
+            cell.circleUnderDate.backgroundColor = UIColor.white
+        } else {
+            cell.circleUnderDate.isHidden = true
+        }
     }
     
 }

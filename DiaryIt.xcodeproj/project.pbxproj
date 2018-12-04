@@ -391,13 +391,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V63UZ8ZMFC;
+				DEVELOPMENT_TEAM = 7C5XTUX6GS;
 				INFOPLIST_FILE = DiaryIt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = rinniswift.DiaryIt;
+				PRODUCT_BUNDLE_IDENTIFIER = rinniswift.NoteIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -410,13 +410,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V63UZ8ZMFC;
+				DEVELOPMENT_TEAM = 7C5XTUX6GS;
 				INFOPLIST_FILE = DiaryIt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = rinniswift.DiaryIt;
+				PRODUCT_BUNDLE_IDENTIFIER = rinniswift.NoteIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
