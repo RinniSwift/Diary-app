@@ -11,7 +11,6 @@ import JTAppleCalendar
 
 class ViewController: UIViewController {
     
-    
     let formatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = Calendar.current.timeZone
@@ -19,9 +18,6 @@ class ViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy MM dd"
         return dateFormatter
     }()
-    
-    
-    
     
     let outsideMonthColor = UIColor.darkWhiteText
     
@@ -46,9 +42,7 @@ class ViewController: UIViewController {
         // set calender to initially be in this month and set it to be initially in the page of this date
         calendarView.scrollToDate(Date(), animateScroll: false)
         
-        
-        
-        // set it to the diary page of the day when opened
+//        set it to the diary page of the day when opened
 //        calendarView.selectDates([Date()])
         
     }
@@ -107,14 +101,9 @@ class ViewController: UIViewController {
 
 extension ViewController: JTAppleCalendarViewDataSource {
     
-    
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
-        
         return
-        
     }
-    
-    
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         
@@ -123,15 +112,13 @@ extension ViewController: JTAppleCalendarViewDataSource {
         formatter.locale = Calendar.current.locale
         
         let startDate = formatter.date(from: "2018 01 01")!
-//        let endDate = formatter.date(from: "2018 12 31")!
-        
         let parameters = ConfigurationParameters(startDate: startDate, endDate: Date())
+        
         return parameters
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // pass information to the DiaryMain storyboard
-//        let destination = segue.destination as! DiaryMain
         switch segue.identifier {
         case "toDiaryMain":
             let date = sender as? Date
@@ -139,12 +126,7 @@ extension ViewController: JTAppleCalendarViewDataSource {
             destination.date = date
         default: break
         }
-        
-        
     }
-    
-    
-    
 }
 
 extension ViewController: JTAppleCalendarViewDelegate {
