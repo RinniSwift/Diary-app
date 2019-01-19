@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         setUpCalendarView()
         
         // set calender to initially be in this month and set it to be initially in the page of this date
-        calendarView.scrollToDate(Date(), animateScroll: false)
+        calendarView.scrollToDate(Date(), animateScroll: true)
         
 //        set it to the diary page of the day when opened
 //        calendarView.selectDates([Date()])
@@ -49,7 +49,6 @@ class ViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 

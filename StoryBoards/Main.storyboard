@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -223,15 +223,24 @@
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tR4-tA-3mR">
+                                <rect key="frame" x="319" y="642" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="addPhotoButtonTapped:" destination="MFL-w4-olj" eventType="touchUpInside" id="oko-Bl-Lr9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="40y-Yp-Jwd" firstAttribute="trailing" secondItem="tR4-tA-3mR" secondAttribute="trailing" constant="10" id="1DP-Fe-nnN"/>
                             <constraint firstItem="KzW-pC-KBf" firstAttribute="top" secondItem="9E9-iD-zPx" secondAttribute="bottom" constant="25" id="1de-tI-5yL"/>
                             <constraint firstItem="9E9-iD-zPx" firstAttribute="leading" secondItem="40y-Yp-Jwd" secondAttribute="leading" constant="15" id="CPL-yE-qeP"/>
                             <constraint firstItem="40y-Yp-Jwd" firstAttribute="bottom" secondItem="KzW-pC-KBf" secondAttribute="bottom" constant="37" id="FE6-3G-6Vm"/>
                             <constraint firstItem="40y-Yp-Jwd" firstAttribute="trailing" secondItem="9E9-iD-zPx" secondAttribute="trailing" constant="15" id="PDc-rg-0cZ"/>
                             <constraint firstItem="9E9-iD-zPx" firstAttribute="top" secondItem="40y-Yp-Jwd" secondAttribute="top" constant="30" id="ZoM-jJ-Ymo"/>
                             <constraint firstItem="40y-Yp-Jwd" firstAttribute="trailing" secondItem="KzW-pC-KBf" secondAttribute="trailing" constant="15" id="blh-2m-RRA"/>
+                            <constraint firstItem="tR4-tA-3mR" firstAttribute="bottom" secondItem="40y-Yp-Jwd" secondAttribute="bottom" constant="5" id="mE1-Sx-Fc1"/>
                             <constraint firstItem="KzW-pC-KBf" firstAttribute="leading" secondItem="40y-Yp-Jwd" secondAttribute="leading" constant="15" id="nLt-0B-BrT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="40y-Yp-Jwd"/>

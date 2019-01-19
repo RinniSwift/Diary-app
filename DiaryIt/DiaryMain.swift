@@ -14,6 +14,7 @@ class DiaryMain: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     
+    
     @IBAction func saveNote(_ sender: Any) {
         
         let notes = CoreDataHelper.retrieveNote().filter({$0.date == date.toString()})
@@ -21,7 +22,6 @@ class DiaryMain: UIViewController {
         if noteAtIndex?.content != nil {
             noteAtIndex?.content = textView.text
             CoreDataHelper.saveNote()
-            
         }
         
         let note = CoreDataHelper.newNote()
@@ -31,6 +31,12 @@ class DiaryMain: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func addPhotoButtonTapped(_ sender: UIButton) {
+        print("add photo button tapped")
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,8 +44,6 @@ class DiaryMain: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-       
         let notes = CoreDataHelper.retrieveNote().filter({$0.date == date.toString()})
         let note = notes.first
         textView.text = note?.content ?? ""
@@ -53,18 +57,7 @@ class DiaryMain: UIViewController {
         textView.keyboardDismissMode = .onDrag
     }
     
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // function to pass data to the ViewController page
-////        let segue = segue.destination as! ViewController
-//        return
-//    }
-    
-    
-    
-    
 }
-
 
 extension Date{
     
