@@ -89,13 +89,12 @@ class ViewController: UIViewController {
     func handleCellSelection(cell: CustomCell, cellState: CellState) {
         
         if cell.dateLabel.textColor == UIColor.brightWhite {
-            cell.circleUnderDate.isHidden = false
-            cell.circleUnderDate.backgroundColor = UIColor.white
+            cell.circleAroundDate.isHidden = false
+            cell.circleAroundDate.backgroundColor = UIColor.darkGrey
         } else {
-            cell.circleUnderDate.isHidden = true
+            cell.circleAroundDate.isHidden = true
         }
     }
-    
 }
 
 extension ViewController: JTAppleCalendarViewDataSource {
@@ -152,7 +151,7 @@ extension ViewController: JTAppleCalendarViewDelegate {
         if monthDateString == todaysDateString {
             handleCellSelection(cell: cell, cellState: cellState)
         } else {
-            cell.circleUnderDate.isHidden = true
+            cell.circleAroundDate.isHidden = true
         }
         // * end: tracks the current date by tracking with a circle around it
         

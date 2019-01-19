@@ -105,6 +105,19 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="56" height="64"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
+                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z4E-wg-tY8">
+                                                            <rect key="frame" x="13" y="16.5" width="30" height="30"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="7Oo-TF-W8h"/>
+                                                                <constraint firstAttribute="width" constant="30" id="tG1-WI-Stp"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="15"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w96-UT-sGE">
                                                             <rect key="frame" x="7" y="19.5" width="42" height="24"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
@@ -127,15 +140,18 @@
                                                     </subviews>
                                                 </view>
                                                 <constraints>
+                                                    <constraint firstItem="z4E-wg-tY8" firstAttribute="centerX" secondItem="vYh-zo-2dg" secondAttribute="centerX" id="Ahp-eZ-I1f"/>
                                                     <constraint firstItem="w96-UT-sGE" firstAttribute="centerX" secondItem="vYh-zo-2dg" secondAttribute="centerX" id="CG4-Ra-QzB"/>
                                                     <constraint firstItem="w96-UT-sGE" firstAttribute="centerX" secondItem="vYh-zo-2dg" secondAttribute="centerX" id="PnT-xV-6Kr"/>
                                                     <constraint firstItem="w96-UT-sGE" firstAttribute="centerX" secondItem="vYh-zo-2dg" secondAttribute="centerX" id="Qpn-pB-c2p"/>
                                                     <constraint firstItem="S58-Xm-bbe" firstAttribute="centerX" secondItem="vYh-zo-2dg" secondAttribute="centerX" id="ZCi-kR-3gB"/>
+                                                    <constraint firstItem="z4E-wg-tY8" firstAttribute="centerY" secondItem="vYh-zo-2dg" secondAttribute="centerY" id="drw-9B-CHF"/>
                                                     <constraint firstItem="w96-UT-sGE" firstAttribute="centerY" secondItem="vYh-zo-2dg" secondAttribute="centerY" id="nlM-hq-Kjq"/>
                                                     <constraint firstItem="w96-UT-sGE" firstAttribute="centerY" secondItem="vYh-zo-2dg" secondAttribute="centerY" id="pYd-Hz-Ade"/>
                                                     <constraint firstItem="S58-Xm-bbe" firstAttribute="top" secondItem="vYh-zo-2dg" secondAttribute="top" constant="50" id="r0F-8A-tAM"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="circleAroundDate" destination="z4E-wg-tY8" id="QvG-ap-GbR"/>
                                                     <outlet property="circleUnderDate" destination="S58-Xm-bbe" id="HkM-Gj-5nc"/>
                                                     <outlet property="dateLabel" destination="w96-UT-sGE" id="NTo-I8-5zm"/>
                                                 </connections>
