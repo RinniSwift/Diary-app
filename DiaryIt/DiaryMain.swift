@@ -35,8 +35,7 @@ class DiaryMain: UIViewController {
         }
     }
     
-    @IBAction func addPhotoButtonTapped(_ sender: UIButton) {
-        print("add photo button tapped")
+    @IBAction func backButtonTapped(_ sender: UIButton) {
     }
     
     

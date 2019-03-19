@@ -197,7 +197,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9E9-iD-zPx">
-                                <rect key="frame" x="15" y="50" width="345" height="40"/>
+                                <rect key="frame" x="15" y="32" width="345" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Da-Ww-Dud">
                                         <rect key="frame" x="0.0" y="5" width="30" height="30"/>
@@ -207,6 +207,7 @@
                                         </constraints>
                                         <state key="normal" title="Button" image="backButton"/>
                                         <connections>
+                                            <action selector="backButtonTapped:" destination="MFL-w4-olj" eventType="touchUpInside" id="9vg-2R-dRz"/>
                                             <segue destination="g3F-vj-Pjh" kind="unwind" unwindAction="unwindToCalendar:" id="CQv-PA-JNI"/>
                                         </connections>
                                     </button>
@@ -232,31 +233,22 @@
                                 </subviews>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="KzW-pC-KBf">
-                                <rect key="frame" x="15" y="115" width="345" height="515"/>
+                                <rect key="frame" x="15" y="97" width="345" height="533"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tR4-tA-3mR">
-                                <rect key="frame" x="319" y="642" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="addPhotoButtonTapped:" destination="MFL-w4-olj" eventType="touchUpInside" id="oko-Bl-Lr9"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="40y-Yp-Jwd" firstAttribute="trailing" secondItem="tR4-tA-3mR" secondAttribute="trailing" constant="10" id="1DP-Fe-nnN"/>
                             <constraint firstItem="KzW-pC-KBf" firstAttribute="top" secondItem="9E9-iD-zPx" secondAttribute="bottom" constant="25" id="1de-tI-5yL"/>
                             <constraint firstItem="9E9-iD-zPx" firstAttribute="leading" secondItem="40y-Yp-Jwd" secondAttribute="leading" constant="15" id="CPL-yE-qeP"/>
                             <constraint firstItem="40y-Yp-Jwd" firstAttribute="bottom" secondItem="KzW-pC-KBf" secondAttribute="bottom" constant="37" id="FE6-3G-6Vm"/>
                             <constraint firstItem="40y-Yp-Jwd" firstAttribute="trailing" secondItem="9E9-iD-zPx" secondAttribute="trailing" constant="15" id="PDc-rg-0cZ"/>
-                            <constraint firstItem="9E9-iD-zPx" firstAttribute="top" secondItem="40y-Yp-Jwd" secondAttribute="top" constant="30" id="ZoM-jJ-Ymo"/>
+                            <constraint firstItem="9E9-iD-zPx" firstAttribute="top" secondItem="40y-Yp-Jwd" secondAttribute="top" constant="12" id="ZoM-jJ-Ymo"/>
                             <constraint firstItem="40y-Yp-Jwd" firstAttribute="trailing" secondItem="KzW-pC-KBf" secondAttribute="trailing" constant="15" id="blh-2m-RRA"/>
-                            <constraint firstItem="tR4-tA-3mR" firstAttribute="bottom" secondItem="40y-Yp-Jwd" secondAttribute="bottom" constant="5" id="mE1-Sx-Fc1"/>
                             <constraint firstItem="KzW-pC-KBf" firstAttribute="leading" secondItem="40y-Yp-Jwd" secondAttribute="leading" constant="15" id="nLt-0B-BrT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="40y-Yp-Jwd"/>
