@@ -45,6 +45,7 @@ class ViewController: UIViewController {
 //        set it to the diary page of the day when opened
 //        calendarView.selectDates([Date()])
         
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,12 +86,12 @@ class ViewController: UIViewController {
         }
     }
     
-    // *** make circle show under date
+    
     func handleCellSelection(cell: CustomCell, cellState: CellState) {
-        
+        // sets circle around date
         if cell.dateLabel.textColor == UIColor.brightWhite {
             cell.circleAroundDate.isHidden = false
-            cell.circleAroundDate.backgroundColor = UIColor.darkGrey
+            cell.circleAroundDate.backgroundColor = UIColor.darkWhiteText
         } else {
             cell.circleAroundDate.isHidden = true
         }
@@ -109,7 +110,7 @@ extension ViewController: JTAppleCalendarViewDataSource {
         formatter.timeZone = Calendar.current.timeZone
         formatter.locale = Calendar.current.locale
         
-        let startDate = formatter.date(from: "2018 01 01")!
+        let startDate = formatter.date(from: "2019 01 01")! // TODO: set to current date from Date() downloaded.
         let parameters = ConfigurationParameters(startDate: startDate, endDate: Date())
         
         return parameters
@@ -153,7 +154,6 @@ extension ViewController: JTAppleCalendarViewDelegate {
         } else {
             cell.circleAroundDate.isHidden = true
         }
-        // * end: tracks the current date by tracking with a circle around it
         
         return cell
     }
