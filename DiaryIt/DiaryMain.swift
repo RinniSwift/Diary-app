@@ -10,13 +10,21 @@ import Foundation
 import UIKit
 
 class DiaryMain: UIViewController {
+    
     var date: Date!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     
     
-    @IBAction func saveNote(_ sender: Any) {
-        
+    
+    @IBAction func deleteButtonTapped(_ sender: UIButton) {
+        let notes = CoreDataHelper.retrieveNote().filter({$0.date == date.toString()})
+        notes.map{ CoreDataHelper.deleteNote(note: $0) }
+    
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func backButtonTapped(_ sender: UIButton) {
         guard textView.text != "" else {
             self.dismiss(animated: true, completion: nil)
             return
@@ -39,21 +47,10 @@ class DiaryMain: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func backButtonTapped(_ sender: UIButton) {
-        if textView.text != nil {
-            let notes = CoreDataHelper.retrieveNote().filter { (note) -> Bool in
-                note.date == date.toString()
-            }
-            print(notes)
-            
-        }
-    }
-    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
     }
     
