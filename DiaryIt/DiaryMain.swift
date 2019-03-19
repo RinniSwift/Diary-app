@@ -29,6 +29,10 @@ class DiaryMain: UIViewController {
         note.date = dateLabel.text
         CoreDataHelper.saveNote()
         self.dismiss(animated: true, completion: nil)
+        
+        if textView.text != nil {
+            // TODO: create NotificationCenter to set circle under date cell.
+        }
     }
     
     @IBAction func addPhotoButtonTapped(_ sender: UIButton) {
