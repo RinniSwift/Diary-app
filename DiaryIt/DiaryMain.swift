@@ -17,25 +17,36 @@ class DiaryMain: UIViewController {
     
     @IBAction func saveNote(_ sender: Any) {
         
+        guard textView.text != "" else {
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
+        
         let notes = CoreDataHelper.retrieveNote().filter({$0.date == date.toString()})
         let noteAtIndex = notes.first
-        if noteAtIndex?.content != nil {
-            noteAtIndex?.content = textView.text
+        
+        if notes.first == nil {
+            // no notes saved before
+            let note = CoreDataHelper.newNote()
+            note.content = textView.text
+            note.date = dateLabel.text
             CoreDataHelper.saveNote()
+        } else {
+            // note saved before
+            noteAtIndex?.content = textView.text
         }
         
-        let note = CoreDataHelper.newNote()
-        note.content = textView.text
-        note.date = dateLabel.text
-        CoreDataHelper.saveNote()
         self.dismiss(animated: true, completion: nil)
-        
-        if textView.text != nil {
-            // TODO: create NotificationCenter to set circle under date cell.
-        }
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
+        if textView.text != nil {
+            let notes = CoreDataHelper.retrieveNote().filter { (note) -> Bool in
+                note.date == date.toString()
+            }
+            print(notes)
+            
+        }
     }
     
     
