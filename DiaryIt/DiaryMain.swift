@@ -8,23 +8,76 @@
 
 import Foundation
 import UIKit
+import Photos
 
-class DiaryMain: UIViewController {
+class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    // MARK: - Variables
     var date: Date!
+    var imagePicker = UIImagePickerController()
+    
+    // MARK: - Outlets
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     
-    
+    // MARK: - Actions
     @IBAction func addImageButtonTapped(_ sender: UIButton) {
-        // TODO: CONFORM class to UIImagePickerControllerDelegate, UINavigationControllerDelegate
-        // TODO: NEW variable UIImagePicker() conform to UIImagePickerDelegate
-        // TODO: NEW function openPhotoLibrary()
-        //          presents the imagePicker of source type .photoLibrary
-        // TODO: NEW function imagePickerController didFinishPicking
-        //          GET image
-        //          TODO: NEW function that resizes the picked image
-        //          TODO: NEW function that add image to textView
+//      TODO: NEW function that add image to textView
+        openPhotoLibrary()
+    }
+    
+    
+    // MARK: - Photo Handling functions
+    func openPhotoLibrary() {
+        PHPhotoLibrary.requestAuthorization { status in
+            switch status {
+            case .authorized:
+                DispatchQueue.main.async {
+                    self.imagePicker.sourceType = .photoLibrary
+                    self.present(self.imagePicker, animated: true, completion: nil)
+                }
+            case .denied:
+                print("denied")
+            case .notDetermined:
+                print("not determined")
+            case .restricted:
+                print("restricted")
+            }
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else {
+            print("image picked is nil")
+            return
+        }
+        let resizedImage = resizeImage(image: image)
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func resizeImage(image: UIImage) -> UIImage {
+        let targetSize = CGSize(width: view.bounds.width - 30, height: view.frame.height / 2)
+        let size = image.size
+        
+        let widthRatio = targetSize.width / size.width
+        let heightRatio = targetSize.height / targetSize.height
+        
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: (size.width * heightRatio), height: (size.height * heightRatio))
+        } else {
+            newSize = CGSize(width: (size.width * widthRatio), height: (size.height * widthRatio))
+        }
+        
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
         
     }
     
@@ -37,6 +90,7 @@ class DiaryMain: UIViewController {
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
+        view.endEditing(true)
         guard textView.text != "" else {
             self.dismiss(animated: true, completion: nil)
             return
@@ -48,12 +102,12 @@ class DiaryMain: UIViewController {
         if notes.first == nil {
             // no notes saved before
             let note = CoreDataHelper.newNote()
-            note.content = textView.text
+            note.content = textView.attributedText
             note.date = dateLabel.text
             CoreDataHelper.saveNote()
         } else {
             // note saved before
-            noteAtIndex?.content = textView.text
+            noteAtIndex?.content = textView.attributedText
         }
         
         self.dismiss(animated: true, completion: nil)
@@ -62,13 +116,14 @@ class DiaryMain: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        imagePicker.delegate = self
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         let notes = CoreDataHelper.retrieveNote().filter({$0.date == date.toString()})
         let note = notes.first
-        textView.text = note?.content ?? ""
+        textView.attributedText = note?.content ?? NSAttributedString(string: "")
         dateLabel.text = date.toString()
         
     }
