@@ -16,6 +16,18 @@ class DiaryMain: UIViewController {
     @IBOutlet weak var textView: UITextView!
     
     
+    @IBAction func addImageButtonTapped(_ sender: UIButton) {
+        // TODO: CONFORM class to UIImagePickerControllerDelegate, UINavigationControllerDelegate
+        // TODO: NEW variable UIImagePicker() conform to UIImagePickerDelegate
+        // TODO: NEW function openPhotoLibrary()
+        //          presents the imagePicker of source type .photoLibrary
+        // TODO: NEW function imagePickerController didFinishPicking
+        //          GET image
+        //          TODO: NEW function that resizes the picked image
+        //          TODO: NEW function that add image to textView
+        
+    }
+    
     
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
         let notes = CoreDataHelper.retrieveNote().filter({$0.date == date.toString()})
@@ -48,7 +60,6 @@ class DiaryMain: UIViewController {
     }
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,7 +78,6 @@ class DiaryMain: UIViewController {
         view.endEditing(true)
         textView.keyboardDismissMode = .onDrag
     }
-    
 }
 
 extension Date{
