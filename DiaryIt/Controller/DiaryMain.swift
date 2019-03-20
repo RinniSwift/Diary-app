@@ -52,8 +52,23 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
             return
         }
         let resizedImage = resizeImage(image: image)
+        addImageToString(image: resizedImage)
         self.dismiss(animated: true, completion: nil)
         
+    }
+    
+    func addImageToString(image: UIImage) {
+        let fullString = NSMutableAttributedString(attributedString: textView.attributedText)
+        
+        let attachement = NSTextAttachment()
+        attachement.image = image
+        
+        let imageToAttach = NSAttributedString(attachment: attachement)
+        
+        fullString.append(NSAttributedString(string: "\n"))
+        fullString.append(imageToAttach)
+        
+        textView.attributedText = fullString
     }
     
     func resizeImage(image: UIImage) -> UIImage {
@@ -78,8 +93,8 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
         UIGraphicsEndImageContext()
         
         return newImage!
-        
     }
+    
     
     
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
