@@ -11,6 +11,7 @@ import UIKit
 import Photos
 
 class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    // TODO: set string variables to be set to the dateLabel and textView text
     
     // MARK: - Variables
     var date: Date!
@@ -132,21 +133,21 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
+        setupView()
+        
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
+    func setupView() {
         let notes = CoreDataHelper.retrieveNote().filter({$0.date == date.toString()})
         let note = notes.first
         textView.attributedText = note?.content ?? NSAttributedString(string: "")
         dateLabel.text = date.toString()
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
-        textView.keyboardDismissMode = .onDrag
+        textView.keyboardDismissMode = .onDrag  // TODO: dismiss .onDrag for when users scroll up the textView
     }
 }
 
