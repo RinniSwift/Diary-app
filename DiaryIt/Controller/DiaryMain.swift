@@ -10,12 +10,13 @@ import Foundation
 import UIKit
 import Photos
 
-class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
     // TODO: set string variables to be set to the dateLabel and textView text
     
     // MARK: - Variables
     var date: Date!
     var imagePicker = UIImagePickerController()
+    var textViewY: CGFloat = 0.0
     
     // MARK: - Outlets
     @IBOutlet weak var dateLabel: UILabel!
@@ -26,7 +27,6 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
 //      TODO: NEW function that add image to textView
         openPhotoLibrary()
     }
-    
     
     // MARK: - Photo Handling functions
     func openPhotoLibrary() {
@@ -97,7 +97,6 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
     }
     
     
-    
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
         let notes = CoreDataHelper.retrieveNote().filter({$0.date == date.toString()})
         notes.map{ CoreDataHelper.deleteNote(note: $0) }
@@ -133,10 +132,54 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
+        textViewY = textView.frame.origin.y
         setupView()
         
+        // TODO: Call this when cursor is below bottom of keyboard height
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textViewChanged), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
     }
     
+    @objc private func textViewChanged(notification: Notification) {
+        let startPosition: UITextPosition = textView.beginningOfDocument
+        let endPosition: UITextPosition = textView.endOfDocument
+        if let selectedRange: UITextRange = textView.selectedTextRange {
+//            let cursorPosition = textView.offset(from: textView.beginningOfDocument, to: selectedRange.start)
+            let caretPositionRectangle: CGRect = textView.caretRect(for: selectedRange.end)
+            print("width of textView: \(textView.frame.size.width)")
+            print(caretPositionRectangle.origin)
+        }
+    }
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        // not good?
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if textView.frame.origin.y == textViewY {
+//                self.textView.frame.origin.y -= keyboardSize.height
+//            }
+//        }
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        // not good?
+//        if self.textView.frame.origin.y != textViewY {
+//            self.textView.frame.origin.y = textViewY
+//        }
+    }
+    
+    @objc func keyboardWillChange(notification: Notification) {
+        if let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let screenHeight = (view.bounds.size).height
+            let keyboardTop = (screenHeight - (keyboardFrame.size.height))
+//            if (currentCursorPosition.y > keyboardTop) {
+//                textView.setContentOffset(CGPoint(x: 0, y: (cursorPoint.y - (screenHeight - keyboardFrame.size.height)) + self.textView.contentOffset.y + 25)), animated: true)
+//
+//            }
+        }
+    }
+ 
     func setupView() {
         let notes = CoreDataHelper.retrieveNote().filter({$0.date == date.toString()})
         let note = notes.first
@@ -149,23 +192,5 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
         view.endEditing(true)
         textView.keyboardDismissMode = .onDrag  // TODO: dismiss .onDrag for when users scroll up the textView
     }
-}
-
-extension Date{
     
-    func toString() -> String{
-        let formatter = DateFormatter()
-        // initially set the format based on your datepicker date / server String
-        formatter.dateFormat = "yyyy MMMM dd"
-        
-        let myString = formatter.string(from: self) // string purpose I add here
-        // convert your string to date
-        let yourDate = formatter.date(from: myString)
-        //then again set the date format whhich type of output you need
-        formatter.dateFormat = "dd MMMM"
-        // again convert your date to string
-        let myStringafd = formatter.string(from: yourDate!)
-        
-        return myStringafd
-    }
 }
