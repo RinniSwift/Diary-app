@@ -240,7 +240,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText">
                                     <fragment>
-                                        <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <attributes>
                                             <color key="NSColor" red="0.41719601295348868" green="0.4147562701876788" blue="0.41963575571929856" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <font key="NSFont" size="17" name="Avenir-Book"/>
@@ -250,13 +250,13 @@
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icP-wK-tsQ">
-                                <rect key="frame" x="284" y="629" width="74" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icP-wK-tsQ">
+                                <rect key="frame" x="320" y="624" width="38" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="zO9-95-kIW"/>
-                                    <constraint firstAttribute="width" constant="74" id="zlK-qS-Pi1"/>
+                                    <constraint firstAttribute="height" constant="35" id="zO9-95-kIW"/>
+                                    <constraint firstAttribute="width" constant="38" id="zlK-qS-Pi1"/>
                                 </constraints>
-                                <state key="normal" title="Add Image"/>
+                                <state key="normal" image="icons8-screenshot-100"/>
                                 <connections>
                                     <action selector="addImageButtonTapped:" destination="MFL-w4-olj" eventType="touchUpInside" id="vCi-OO-Hbz"/>
                                 </connections>
@@ -286,51 +286,10 @@
             </objects>
             <point key="canvasLocation" x="914" y="134"/>
         </scene>
-        <!--Sample View Controller-->
-        <scene sceneID="xjO-Fu-lRc">
-            <objects>
-                <viewController id="sp9-6o-mUV" customClass="SampleViewController" customModule="DiaryIt" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kNf-rh-ucj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Zb-Sw-sLd">
-                                <rect key="frame" x="15" y="100" width="345" height="467"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <attributedString key="attributedText"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Abf-d4-avR">
-                                <rect key="frame" x="150.5" y="603" width="74" height="30"/>
-                                <state key="normal" title="Add Image"/>
-                                <connections>
-                                    <action selector="addImageButtonTapped:" destination="sp9-6o-mUV" eventType="touchUpInside" id="mNP-21-yMd"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="QWy-BS-Xrg" firstAttribute="bottom" secondItem="9Zb-Sw-sLd" secondAttribute="bottom" constant="100" id="OYn-S4-uht"/>
-                            <constraint firstItem="Abf-d4-avR" firstAttribute="centerX" secondItem="kNf-rh-ucj" secondAttribute="centerX" id="fZn-bs-Arb"/>
-                            <constraint firstItem="QWy-BS-Xrg" firstAttribute="bottom" secondItem="Abf-d4-avR" secondAttribute="bottom" constant="34" id="g7O-cL-t6a"/>
-                            <constraint firstItem="9Zb-Sw-sLd" firstAttribute="leading" secondItem="QWy-BS-Xrg" secondAttribute="leading" constant="15" id="iAq-NZ-LIu"/>
-                            <constraint firstItem="9Zb-Sw-sLd" firstAttribute="top" secondItem="QWy-BS-Xrg" secondAttribute="top" constant="80" id="jOk-OG-RDv"/>
-                            <constraint firstItem="QWy-BS-Xrg" firstAttribute="trailing" secondItem="9Zb-Sw-sLd" secondAttribute="trailing" constant="15" id="w2I-4A-GJI"/>
-                            <constraint firstItem="Abf-d4-avR" firstAttribute="top" secondItem="9Zb-Sw-sLd" secondAttribute="bottom" constant="36" id="zZD-LX-Jr0"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="QWy-BS-Xrg"/>
-                    </view>
-                    <connections>
-                        <outlet property="textView" destination="9Zb-Sw-sLd" id="wQg-MD-Jr0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rnQ-Xz-80Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="913.49325337331345"/>
-        </scene>
     </scenes>
     <resources>
         <image name="back" width="100" height="100"/>
+        <image name="icons8-screenshot-100" width="100" height="100"/>
         <image name="trash" width="100" height="100"/>
     </resources>
 </document>
