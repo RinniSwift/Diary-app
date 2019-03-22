@@ -16,7 +16,6 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
     // MARK: - Variables
     var date: Date!
     var imagePicker = UIImagePickerController()
-    var textViewY: CGFloat = 0.0
     
     // MARK: - Outlets
     @IBOutlet weak var dateLabel: UILabel!
@@ -73,7 +72,7 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
     }
     
     func resizeImage(image: UIImage) -> UIImage {
-        let targetSize = CGSize(width: view.bounds.width - 30, height: view.frame.height / 2)
+        let targetSize = CGSize(width: view.bounds.width - 40, height: view.frame.height / 3)
         let size = image.size
         
         let widthRatio = targetSize.width / size.width
@@ -132,54 +131,11 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        textViewY = textView.frame.origin.y
         setupView()
-        
-        // TODO: Call this when cursor is below bottom of keyboard height
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(textViewChanged), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
+        textView.delegate = self
+        keyboardListenEvents()
     }
     
-    @objc private func textViewChanged(notification: Notification) {
-        let startPosition: UITextPosition = textView.beginningOfDocument
-        let endPosition: UITextPosition = textView.endOfDocument
-        if let selectedRange: UITextRange = textView.selectedTextRange {
-//            let cursorPosition = textView.offset(from: textView.beginningOfDocument, to: selectedRange.start)
-            let caretPositionRectangle: CGRect = textView.caretRect(for: selectedRange.end)
-            print("width of textView: \(textView.frame.size.width)")
-            print(caretPositionRectangle.origin)
-        }
-    }
-    
-    @objc func keyboardWillShow(notification: Notification) {
-        // not good?
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if textView.frame.origin.y == textViewY {
-//                self.textView.frame.origin.y -= keyboardSize.height
-//            }
-//        }
-    }
-    
-    @objc func keyboardWillHide(notification: Notification) {
-        // not good?
-//        if self.textView.frame.origin.y != textViewY {
-//            self.textView.frame.origin.y = textViewY
-//        }
-    }
-    
-    @objc func keyboardWillChange(notification: Notification) {
-        if let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            let screenHeight = (view.bounds.size).height
-            let keyboardTop = (screenHeight - (keyboardFrame.size.height))
-//            if (currentCursorPosition.y > keyboardTop) {
-//                textView.setContentOffset(CGPoint(x: 0, y: (cursorPoint.y - (screenHeight - keyboardFrame.size.height)) + self.textView.contentOffset.y + 25)), animated: true)
-//
-//            }
-        }
-    }
- 
     func setupView() {
         let notes = CoreDataHelper.retrieveNote().filter({$0.date == date.toString()})
         let note = notes.first
@@ -190,7 +146,38 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
-        textView.keyboardDismissMode = .onDrag  // TODO: dismiss .onDrag for when users scroll up the textView
+//        textView.keyboardDismissMode = .onDrag
     }
     
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+}
+
+
+
+extension DiaryMain {   // keyboard notification handling
+    
+    func keyboardListenEvents() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTextView(notification: )), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTextView(notification: )), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc func updateTextView(notification: Notification) {
+        if let keyboardEndFrameScreenCoord = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            
+            let keyboardEndFrame = view.convert(keyboardEndFrameScreenCoord, to: view.window)
+            
+            if notification.name == Notification.Name.UIKeyboardWillHide {
+                textView.contentInset = UIEdgeInsets.zero
+            } else {
+                textView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardEndFrame.height, right: 0)
+                textView.scrollIndicatorInsets = textView.contentInset
+            }
+            textView.scrollRangeToVisible(textView.selectedRange)
+            
+        }
+    }
 }
