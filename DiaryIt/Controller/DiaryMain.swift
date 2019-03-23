@@ -58,17 +58,25 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
     }
     
     func addImageToString(image: UIImage) {
+        // setting the attributes of the string
+        let textAttributes: [NSAttributedStringKey: Any] = [
+            .font: UIFont(name: "Avenir-Book", size: 17),
+            .foregroundColor: UIColor(red:0.42, green:0.42, blue:0.42, alpha:1.0)]
+        
+        
         let fullString = NSMutableAttributedString(attributedString: textView.attributedText)
+        fullString.setFont()
         
         let attachement = NSTextAttachment()
         attachement.image = image
         
         let imageToAttach = NSAttributedString(attachment: attachement)
         
-        fullString.append(NSAttributedString(string: "\n"))
         fullString.append(imageToAttach)
+        fullString.append(NSAttributedString(string: "\n", attributes: textAttributes))
         
         textView.attributedText = fullString
+        textView.reloadInputViews()
     }
     
     func resizeImage(image: UIImage) -> UIImage {
@@ -146,7 +154,6 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
-//        textView.keyboardDismissMode = .onDrag
     }
     
     
