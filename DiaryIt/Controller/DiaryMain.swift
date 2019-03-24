@@ -153,14 +153,17 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
     }
     
     func setupToolBar() {
-        let addImageButtonImage = UIBarButtonItem(image: UIImage(named: "icons8-screenshot-100"), style: .plain, target: self, action: #selector(addImage))
-        addImageButtonImage.tintColor = UIColor.darkGray
-        addImageButtonImage.width = 30
+        
+        let addImageButton = UIButton()
+        addImageButton.setImage(UIImage(named: "icons8-screenshot-100"), for: .normal)
+        addImageButton.imageView?.contentMode = .scaleAspectFit
+        addImageButton.addTarget(self, action: #selector(addImage), for: .touchUpInside)
+        
+        let addImageBarButton = UIBarButtonItem(customView: addImageButton)
         
         let bar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
         bar.barStyle = .default
-        bar.items = [addImageButtonImage]
-        
+        bar.items = [addImageBarButton]
         textView.inputAccessoryView = bar
     }
     
