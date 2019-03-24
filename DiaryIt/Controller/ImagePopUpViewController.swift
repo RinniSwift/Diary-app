@@ -9,22 +9,19 @@
 import UIKit
 
 class ImagePopUpViewController: UIViewController {
-
+    // TODO: when tapped on view, dismiss the view controller
+    
+    var imageToFill: UIImage? = nil
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        imageView.image = imageToFill
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.dismiss(animated: false, completion: nil)
     }
-    */
-
+    
 }
