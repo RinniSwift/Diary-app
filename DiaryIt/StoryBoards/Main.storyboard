@@ -240,9 +240,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText">
                                     <fragment>
-                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                         <attributes>
-                                            <color key="NSColor" red="0.41719601295348868" green="0.4147562701876788" blue="0.41963575571929856" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="NSColor" red="0.41568627450980389" green="0.41568627450980389" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <font key="NSFont" size="17" name="Avenir-Book"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
@@ -251,10 +251,10 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icP-wK-tsQ">
-                                <rect key="frame" x="320" y="624" width="38" height="35"/>
+                                <rect key="frame" x="325" y="631" width="33" height="31"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="zO9-95-kIW"/>
-                                    <constraint firstAttribute="width" constant="38" id="zlK-qS-Pi1"/>
+                                    <constraint firstAttribute="height" constant="31" id="zO9-95-kIW"/>
+                                    <constraint firstAttribute="width" constant="33" id="zlK-qS-Pi1"/>
                                 </constraints>
                                 <state key="normal" image="icons8-screenshot-100"/>
                                 <connections>
@@ -267,7 +267,7 @@
                             <constraint firstItem="KzW-pC-KBf" firstAttribute="top" secondItem="9E9-iD-zPx" secondAttribute="bottom" constant="25" id="1de-tI-5yL"/>
                             <constraint firstItem="9E9-iD-zPx" firstAttribute="leading" secondItem="40y-Yp-Jwd" secondAttribute="leading" constant="15" id="CPL-yE-qeP"/>
                             <constraint firstItem="40y-Yp-Jwd" firstAttribute="bottom" secondItem="KzW-pC-KBf" secondAttribute="bottom" constant="37" id="FE6-3G-6Vm"/>
-                            <constraint firstItem="40y-Yp-Jwd" firstAttribute="bottom" secondItem="icP-wK-tsQ" secondAttribute="bottom" constant="8" id="HR1-bW-8l1"/>
+                            <constraint firstItem="40y-Yp-Jwd" firstAttribute="bottom" secondItem="icP-wK-tsQ" secondAttribute="bottom" constant="5" id="HR1-bW-8l1"/>
                             <constraint firstItem="40y-Yp-Jwd" firstAttribute="trailing" secondItem="9E9-iD-zPx" secondAttribute="trailing" constant="15" id="PDc-rg-0cZ"/>
                             <constraint firstItem="9E9-iD-zPx" firstAttribute="top" secondItem="40y-Yp-Jwd" secondAttribute="top" constant="12" id="ZoM-jJ-Ymo"/>
                             <constraint firstItem="40y-Yp-Jwd" firstAttribute="trailing" secondItem="KzW-pC-KBf" secondAttribute="trailing" constant="15" id="blh-2m-RRA"/>
