@@ -159,9 +159,10 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
         addImageButton.imageView?.contentMode = .scaleAspectFit
         addImageButton.addTarget(self, action: #selector(addImage), for: .touchUpInside)
         
+        // set UIBarButtonItem(image:) rather than customView to add many bar button items.
         let addImageBarButton = UIBarButtonItem(customView: addImageButton)
         
-        let bar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
+        let bar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35))
         bar.barStyle = .default
         bar.items = [addImageBarButton]
         textView.inputAccessoryView = bar
