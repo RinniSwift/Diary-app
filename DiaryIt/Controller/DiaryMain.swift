@@ -142,6 +142,7 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
         setupView()
         textView.delegate = self
         keyboardListenEvents()
+        setupToolBar()
     }
     
     func setupView() {
@@ -151,9 +152,20 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
         dateLabel.text = date.toString()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        view.endEditing(true)
+    func setupToolBar() {
+        let addImageButtonImage = UIBarButtonItem(image: UIImage(named: "icons8-screenshot-100"), style: .plain, target: self, action: #selector(addImage))
+        addImageButtonImage.tintColor = UIColor.darkGray
+        addImageButtonImage.width = 30
+        
+        let bar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
+        bar.barStyle = .default
+        bar.items = [addImageButtonImage]
+        
+        textView.inputAccessoryView = bar
+    }
+    
+    @objc func addImage() {
+        openPhotoLibrary()
     }
     
     
@@ -166,6 +178,11 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
 
 
 extension DiaryMain {   // keyboard notification handling
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
     
     func keyboardListenEvents() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateTextView(notification: )), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
