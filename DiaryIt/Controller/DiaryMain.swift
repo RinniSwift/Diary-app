@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 import Photos
 
-class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
-    // TODO: set string variables to be set to the dateLabel and textView text
+class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UIGestureRecognizerDelegate{
     
     // MARK: - Variables
     var date: Date!
     var imagePicker = UIImagePickerController()
+    
     
     // MARK: - Outlets
     @IBOutlet weak var dateLabel: UILabel!
@@ -80,6 +80,8 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
     }
     
     func resizeImage(image: UIImage) -> UIImage {
+        // TODO: Scale image into the textView to be smaller. Don't change the size of the image.
+        
         let targetSize = CGSize(width: view.bounds.width - 40, height: view.frame.height / 3)
         let size = image.size
         
@@ -103,6 +105,9 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
         return newImage!
     }
     
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
     
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
         let notes = CoreDataHelper.retrieveNote().filter({$0.date == date.toString()})
@@ -143,6 +148,10 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
         textView.delegate = self
         keyboardListenEvents()
         setupToolBar()
+        
+        let TapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnImage(_:)))
+        TapGesture.delegate = self
+        textView.addGestureRecognizer(TapGesture)
     }
     
     func setupView() {
@@ -170,6 +179,31 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     @objc func addImage() {
         openPhotoLibrary()
+    }
+    
+    @objc func tapOnImage(_ sender: UITapGestureRecognizer) {
+        let textView = sender.view as! UITextView
+        let layoutManager = textView.layoutManager
+        
+        var location = sender.location(in: textView)
+        location.x -= textView.textContainerInset.left
+        location.y -= textView.textContainerInset.top
+        
+        let characterIndex = layoutManager.characterIndex(for: location, in: textView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+        
+        if characterIndex < textView.textStorage.length {   // tap is in textStorage length
+            let attachment = textView.attributedText.attribute(NSAttributedStringKey.attachment,
+                                                               at: characterIndex,
+                                                               effectiveRange: nil) as? NSTextAttachment
+            if let attachImage = attachment {
+                print("tap on image: ", attachImage.image)
+                actionForImageTapped(image: attachImage.image!)
+            }
+        }
+    }
+    
+    func actionForImageTapped(image: UIImage) {
+        print("action for image: \(image)")
     }
     
     
