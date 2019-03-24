@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Photos
 
-class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UIGestureRecognizerDelegate{
+class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UIGestureRecognizerDelegate {
     
     // MARK: - Variables
     var date: Date!
@@ -27,92 +27,10 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
         openPhotoLibrary()
     }
     
-    // MARK: - Photo Handling functions
-    func openPhotoLibrary() {
-        PHPhotoLibrary.requestAuthorization { status in
-            switch status {
-            case .authorized:
-                DispatchQueue.main.async {
-                    self.imagePicker.sourceType = .photoLibrary
-                    self.present(self.imagePicker, animated: true, completion: nil)
-                }
-            case .denied:
-                print("denied")
-            case .notDetermined:
-                print("not determined")
-            case .restricted:
-                print("restricted")
-            }
-        }
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else {
-            print("image picked is nil")
-            return
-        }
-        let resizedImage = resizeImage(image: image)
-        addImageToString(image: resizedImage)
-        self.dismiss(animated: true, completion: nil)
-        
-    }
-    
-    func addImageToString(image: UIImage) {
-        // setting the attributes of the string
-        let textAttributes: [NSAttributedStringKey: Any] = [
-            .font: UIFont(name: "Avenir-Book", size: 17),
-            .foregroundColor: UIColor(red:0.42, green:0.42, blue:0.42, alpha:1.0)]
-        
-        
-        let fullString = NSMutableAttributedString(attributedString: textView.attributedText)
-        fullString.setFont()
-        
-        let attachement = NSTextAttachment()
-        attachement.image = image
-        
-        let imageToAttach = NSAttributedString(attachment: attachement)
-        
-        fullString.append(imageToAttach)
-        fullString.append(NSAttributedString(string: "\n", attributes: textAttributes))
-        
-        textView.attributedText = fullString
-        textView.reloadInputViews()
-    }
-    
-    func resizeImage(image: UIImage) -> UIImage {
-        // TODO: Scale image into the textView to be smaller. Don't change the size of the image.
-        
-        let targetSize = CGSize(width: view.bounds.width - 40, height: view.frame.height / 3)
-        let size = image.size
-        
-        let widthRatio = targetSize.width / size.width
-        let heightRatio = targetSize.height / targetSize.height
-        
-        var newSize: CGSize
-        if(widthRatio > heightRatio) {
-            newSize = CGSize(width: (size.width * heightRatio), height: (size.height * heightRatio))
-        } else {
-            newSize = CGSize(width: (size.width * widthRatio), height: (size.height * widthRatio))
-        }
-        
-        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-        image.draw(in: rect)
-        
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage!
-    }
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-    
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
         let notes = CoreDataHelper.retrieveNote().filter({$0.date == date.toString()})
         notes.map{ CoreDataHelper.deleteNote(note: $0) }
-    
+        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -140,6 +58,62 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
         self.dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - Photo Handling functions
+    func openPhotoLibrary() {
+        PHPhotoLibrary.requestAuthorization { status in
+            switch status {
+            case .authorized:
+                DispatchQueue.main.async {
+                    self.imagePicker.sourceType = .photoLibrary
+                    self.present(self.imagePicker, animated: true, completion: nil)
+                }
+            case .denied:
+                print("denied")
+            case .notDetermined:
+                print("not determined")
+            case .restricted:
+                print("restricted")
+            }
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else {
+            print("image picked is nil")
+            return
+        }
+        let resizedImage = image.resizeImage(view: self.view)
+        addImageToString(image: resizedImage)
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func addImageToString(image: UIImage) {
+        // setting the attributes of the string
+        let textAttributes: [NSAttributedStringKey: Any] = [
+            .font: UIFont(name: "Avenir-Book", size: 17),
+            .foregroundColor: UIColor(red:0.42, green:0.42, blue:0.42, alpha:1.0)]
+        
+        
+        let fullString = NSMutableAttributedString(attributedString: textView.attributedText)
+        fullString.setFont()
+        
+        let attachement = NSTextAttachment()
+        attachement.image = image
+        
+        let imageToAttach = NSAttributedString(attachment: attachement)
+        
+        fullString.append(imageToAttach)
+        fullString.append(NSAttributedString(string: "\n", attributes: textAttributes))
+        
+        textView.attributedText = fullString
+        textView.reloadInputViews()
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -203,7 +177,12 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
     }
     
     func actionForImageTapped(image: UIImage) {
-        print("action for image: \(image)")
+        // TODO: present pop over with image
+        
+        let story = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let popUpView = story.instantiateViewController(withIdentifier: "popUpImage") as? ImagePopUpViewController else { return }
+        popUpView.imageToFill = image
+        self.present(popUpView, animated: true, completion: nil)
     }
     
     
@@ -239,7 +218,6 @@ extension DiaryMain {   // keyboard notification handling
                 textView.scrollIndicatorInsets = textView.contentInset
             }
             textView.scrollRangeToVisible(textView.selectedRange)
-            
         }
     }
 }
