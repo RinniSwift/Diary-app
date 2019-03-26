@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Alert View Controller-->
         <scene sceneID="ZMt-nT-aDa">
             <objects>
-                <viewController id="lVR-e9-M2k" customClass="AlertViewController" customModule="DiaryIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="alertViewID" id="lVR-e9-M2k" customClass="AlertViewController" customModule="DiaryIt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Bb-P6-IpG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,7 +102,7 @@
         <!--Ib Calendar Data Source-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DiaryIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="viewControllerID" id="BYZ-38-t0r" customClass="ViewController" customModule="DiaryIt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lqR-TD-UGN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -264,7 +264,7 @@
                                 </constraints>
                                 <state key="normal" image="alertLogs"/>
                                 <connections>
-                                    <segue destination="lVR-e9-M2k" kind="presentation" id="ltg-h7-yOJ"/>
+                                    <action selector="viewAlertViewControllerButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Xs-Dg-V0b"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -418,36 +418,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ofx-41-mjA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1670" y="134"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="fqD-ME-HwH">
-            <objects>
-                <viewController id="8cP-fO-B1K" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8go-xa-3MX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" pagingEnabled="YES" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="MRK-B8-iDS">
-                                <rect key="frame" x="0.0" y="120" width="375" height="447"/>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="MRK-B8-iDS" firstAttribute="top" secondItem="52v-2d-jSj" secondAttribute="top" constant="100" id="2ie-0a-hAK"/>
-                            <constraint firstItem="MRK-B8-iDS" firstAttribute="leading" secondItem="52v-2d-jSj" secondAttribute="leading" id="3wV-9u-iCt"/>
-                            <constraint firstItem="52v-2d-jSj" firstAttribute="trailing" secondItem="MRK-B8-iDS" secondAttribute="trailing" id="MJu-KL-esQ"/>
-                            <constraint firstItem="52v-2d-jSj" firstAttribute="bottom" secondItem="MRK-B8-iDS" secondAttribute="bottom" constant="100" id="RWI-Xv-vsv"/>
-                            <constraint firstItem="MRK-B8-iDS" firstAttribute="centerX" secondItem="8go-xa-3MX" secondAttribute="centerX" id="wE5-n3-8lV"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="52v-2d-jSj"/>
-                    </view>
-                    <connections>
-                        <outlet property="scrollView" destination="MRK-B8-iDS" id="0Fq-eL-rMq"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u0l-Gg-Oo8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2730" y="-530"/>
         </scene>
     </scenes>
     <resources>
