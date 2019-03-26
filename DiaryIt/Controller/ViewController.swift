@@ -11,6 +11,9 @@ import JTAppleCalendar
 
 class ViewController: UIViewController {
     
+    // MARK: - Variables
+    var delegate: CalendarControllerDelegate?
+    
     let formatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = Calendar.current.timeZone
@@ -29,7 +32,10 @@ class ViewController: UIViewController {
         // for the unwind segue in DiaryMain storyboard
     }
 
-
+    @IBAction func viewAlertViewControllerButton(_ sender: UIButton) {
+        delegate?.handleSideToggle()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
