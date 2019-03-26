@@ -42,7 +42,7 @@ class ContainerViewC: UIViewController {
         }
     }
     
-    func showRedViewController(shouldExpand: Bool) {
+    func showAlertViewController(shouldExpand: Bool) {
         let viewController = centerViewController.viewControllers.first as! ViewController
         
         if shouldExpand {
@@ -59,6 +59,21 @@ class ContainerViewC: UIViewController {
             viewController.calendarView.isUserInteractionEnabled = true
         }
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if isExpanded {
+            print("is expanded")
+            let touch = touches.first?.location(in: centerViewController.view)
+            if touch != nil {
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                    self.centerViewController.view.frame.origin.x = 0
+                }, completion: nil)
+                isExpanded = !isExpanded
+            }
+        }
+        
+    }
 }
 
 
@@ -70,7 +85,7 @@ extension ContainerViewC: CalendarControllerDelegate {
             configureRedViewController()
         }
         isExpanded = !isExpanded
-        showRedViewController(shouldExpand: isExpanded)
+        showAlertViewController(shouldExpand: isExpanded)
     }
     
 }
