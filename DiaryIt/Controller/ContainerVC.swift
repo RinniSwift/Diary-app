@@ -43,19 +43,21 @@ class ContainerViewC: UIViewController {
     }
     
     func showRedViewController(shouldExpand: Bool) {
+        let viewController = centerViewController.viewControllers.first as! ViewController
         
         if shouldExpand {
             // show menu
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 self.centerViewController.view.frame.origin.x = self.centerViewController.view.frame.width - 80
                 }, completion: nil)
+            viewController.calendarView.isUserInteractionEnabled = false
         } else {
             // hide menu
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 self.centerViewController.view.frame.origin.x = 0
             }, completion: nil)
+            viewController.calendarView.isUserInteractionEnabled = true
         }
-        
     }
 }
 
