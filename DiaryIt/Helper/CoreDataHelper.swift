@@ -37,7 +37,6 @@ struct CoreDataHelper {
     
     static func deleteNote(note: Note) {
         context.delete(note)
-        
         saveNote()
     }
     
@@ -49,7 +48,6 @@ struct CoreDataHelper {
             return results
         } catch let error {
             print("could not fetch \(error.localizedDescription)")
-            
             return []
         }
     }
