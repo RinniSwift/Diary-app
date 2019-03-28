@@ -19,57 +19,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6e-dd-bNi">
-                                <rect key="frame" x="298" y="590" width="60" height="60"/>
+                                <rect key="frame" x="228" y="595" width="55" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="k6a-pg-LWd"/>
-                                    <constraint firstAttribute="width" constant="60" id="z3J-7n-UeC"/>
+                                    <constraint firstAttribute="height" constant="55" id="k6a-pg-LWd"/>
+                                    <constraint firstAttribute="width" constant="55" id="z3J-7n-UeC"/>
                                 </constraints>
                                 <state key="normal" image="addReminderButtonImg"/>
                                 <connections>
                                     <action selector="addReminder:" destination="lVR-e9-M2k" eventType="touchUpInside" id="JEQ-hf-y7d"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="6SQ-gT-BXc">
-                                <rect key="frame" x="15" y="35" width="345" height="40"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UhJ-in-2lh">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Hqk-Wa-fpf"/>
-                                            <constraint firstAttribute="width" constant="40" id="un9-gR-ofT"/>
-                                        </constraints>
-                                        <state key="normal" image="back"/>
-                                        <connections>
-                                            <segue destination="6hC-wt-ncy" kind="unwind" unwindAction="unwindToCalendar:" id="6q9-3D-5Sg"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminders" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UjC-tz-bLp">
-                                        <rect key="frame" x="81" y="0.0" width="183" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="epl-A5-jt9"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                        <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCP-YY-49G">
-                                        <rect key="frame" x="305" y="0.0" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="jyH-a6-Xa6"/>
-                                            <constraint firstAttribute="height" constant="40" id="s9L-mX-bVO"/>
-                                        </constraints>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminders" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UjC-tz-bLp">
+                                <rect key="frame" x="0.0" y="35" width="295" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="epl-A5-jt9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="q5Y-gx-VY4">
-                                <rect key="frame" x="0.0" y="90" width="375" height="497"/>
+                                <rect key="frame" x="0.0" y="90" width="283" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="zeL-XX-1Gx">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="283" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zeL-XX-1Gx" id="Udw-v6-nwO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="283" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -78,15 +55,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="xO8-gq-HaO" firstAttribute="trailing" secondItem="j6e-dd-bNi" secondAttribute="trailing" constant="17" id="0Bg-wl-7Qh"/>
+                            <constraint firstItem="xO8-gq-HaO" firstAttribute="trailing" secondItem="j6e-dd-bNi" secondAttribute="trailing" constant="92" id="0Bg-wl-7Qh"/>
                             <constraint firstItem="j6e-dd-bNi" firstAttribute="top" secondItem="q5Y-gx-VY4" secondAttribute="bottom" constant="3" id="2k2-Yf-SFI"/>
-                            <constraint firstItem="q5Y-gx-VY4" firstAttribute="trailing" secondItem="xO8-gq-HaO" secondAttribute="trailing" id="Xkh-EW-JLb"/>
-                            <constraint firstItem="6SQ-gT-BXc" firstAttribute="top" secondItem="xO8-gq-HaO" secondAttribute="top" constant="15" id="dsT-JY-dYg"/>
-                            <constraint firstItem="q5Y-gx-VY4" firstAttribute="top" secondItem="6SQ-gT-BXc" secondAttribute="bottom" constant="15" id="eld-AH-HFW"/>
+                            <constraint firstItem="q5Y-gx-VY4" firstAttribute="top" secondItem="UjC-tz-bLp" secondAttribute="bottom" constant="15" id="XLo-x7-Dcj"/>
+                            <constraint firstItem="q5Y-gx-VY4" firstAttribute="trailing" secondItem="xO8-gq-HaO" secondAttribute="trailing" constant="-92" id="Xkh-EW-JLb"/>
+                            <constraint firstItem="xO8-gq-HaO" firstAttribute="trailing" secondItem="UjC-tz-bLp" secondAttribute="trailing" constant="80" id="YFH-h9-adO"/>
                             <constraint firstItem="q5Y-gx-VY4" firstAttribute="leading" secondItem="xO8-gq-HaO" secondAttribute="leading" id="mCa-Ct-qxR"/>
-                            <constraint firstItem="6SQ-gT-BXc" firstAttribute="leading" secondItem="xO8-gq-HaO" secondAttribute="leading" constant="15" id="p5W-u2-Wrd"/>
                             <constraint firstAttribute="bottom" secondItem="j6e-dd-bNi" secondAttribute="bottom" constant="17" id="pYX-4d-0Vf"/>
-                            <constraint firstItem="xO8-gq-HaO" firstAttribute="trailing" secondItem="6SQ-gT-BXc" secondAttribute="trailing" constant="15" id="ykC-6s-OLJ"/>
+                            <constraint firstItem="UjC-tz-bLp" firstAttribute="top" secondItem="xO8-gq-HaO" secondAttribute="top" constant="15" id="ubW-6m-ml4"/>
+                            <constraint firstItem="UjC-tz-bLp" firstAttribute="leading" secondItem="xO8-gq-HaO" secondAttribute="leading" id="wrb-Ym-ASJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xO8-gq-HaO"/>
                     </view>
@@ -95,7 +72,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ge7-ZN-nvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="6hC-wt-ncy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="913" y="-619"/>
         </scene>
@@ -283,7 +259,6 @@
                         <outlet property="calendarView" destination="tHl-jA-KoQ" id="ZIa-7d-WOF"/>
                         <outlet property="month" destination="FO4-7s-Rci" id="sQT-ES-67p"/>
                         <outlet property="year" destination="01p-cN-xxe" id="zvU-Av-oVK"/>
-                        <segue destination="MFL-w4-olj" kind="show" identifier="toDiaryMain" id="CsL-L2-ONS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -293,7 +268,7 @@
         <!--Diary Main-->
         <scene sceneID="j6p-WA-B2y">
             <objects>
-                <viewController id="MFL-w4-olj" customClass="DiaryMain" customModule="DiaryIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="diaryMain" id="MFL-w4-olj" customClass="DiaryMain" customModule="DiaryIt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m35-We-20r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

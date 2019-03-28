@@ -16,7 +16,6 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
     var date: Date!
     var imagePicker = UIImagePickerController()
     
-    
     // MARK: - Outlets
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
@@ -31,7 +30,8 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
         let notes = CoreDataHelper.retrieveNote().filter({$0.date == date.toString()})
         notes.map{ CoreDataHelper.deleteNote(note: $0) }
         
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+        
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
@@ -78,17 +78,19 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
         guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else {
             print("image picked is nil")
             return
         }
+        
         let resizedImage = image.resizeImage(view: self.view)
         addImageToString(image: resizedImage)
         self.dismiss(animated: true, completion: nil)
-        
     }
     
     func addImageToString(image: UIImage) {
+        
         // setting the attributes of the string
         let textAttributes: [NSAttributedStringKey: Any] = [
             .font: UIFont(name: "Avenir-Book", size: 17),
@@ -123,9 +125,9 @@ class DiaryMain: UIViewController, UIImagePickerControllerDelegate, UINavigation
         keyboardListenEvents()
         setupToolBar()
         
-        let TapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnImage(_:)))
-        TapGesture.delegate = self
-        textView.addGestureRecognizer(TapGesture)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnImage(_:)))
+        tapGesture.delegate = self
+        textView.addGestureRecognizer(tapGesture)
     }
     
     func setupView() {

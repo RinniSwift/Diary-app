@@ -121,17 +121,6 @@ extension ViewController: JTAppleCalendarViewDataSource {
         
         return parameters
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // pass information to the DiaryMain storyboard
-        switch segue.identifier {
-        case "toDiaryMain":
-            let date = sender as? Date
-            let destination = segue.destination as! DiaryMain
-            destination.date = date
-        default: break
-        }
-    }
 }
 
 
@@ -173,9 +162,11 @@ extension ViewController: JTAppleCalendarViewDelegate {
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+
+        let diaryMainViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "diaryMain") as! DiaryMain
+        diaryMainViewController.date = date
+        self.navigationController?.pushViewController(diaryMainViewController, animated: true)
         
-        // perform segue once tapped on cell
-        performSegue(withIdentifier: "toDiaryMain", sender: date)
 
     }
     
