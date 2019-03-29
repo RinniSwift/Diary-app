@@ -12,7 +12,7 @@
 1. Purple App Color: #8A89F0
 2. Pink App Color: #FD94AE
 
-*insert image of color swatches*
+![color swatches](Images/colorSwatches.png)
 
 1. Purple background color gradients: #9697EF
 2. Pink background color gradients: #FAC6D4
