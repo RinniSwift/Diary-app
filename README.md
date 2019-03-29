@@ -2,12 +2,11 @@
 
 *iOS app for diary taking. Users are open up to a calendar and can click on each individual day to take notes; including text and images. Users can create reminders that are assigned to chosen date.*
 
-*insert app screen shots*
-
+![screenshots](Screenshots.png)
 
 ## App Icon
 
-*insert image*
+![appicon](appIcon.png)
 
 #### Color Scheme
 1. Purple App Color: #8A89F0
