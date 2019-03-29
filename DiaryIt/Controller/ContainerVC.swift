@@ -61,6 +61,7 @@ class ContainerViewC: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let viewController = centerViewController.viewControllers.first as! ViewController
         
         if isExpanded {
             print("is expanded")
@@ -71,8 +72,8 @@ class ContainerViewC: UIViewController {
                 }, completion: nil)
                 isExpanded = !isExpanded
             }
+            viewController.calendarView.isUserInteractionEnabled = true
         }
-        
     }
 }
 
