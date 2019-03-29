@@ -6,7 +6,6 @@
 ![screenshots, 20%](Images/Screenshots.png)
 
 ## App Icon
-
 ![appicon](Images/appIcon.png)
 
 #### Color Scheme
