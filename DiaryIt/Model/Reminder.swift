@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+struct Reminder {
+    
+    let title: String
+    let date: String
+    
+    init(title: String, date: String) {
+        self.title = title
+        self.date = date
+    }
+    
+}
