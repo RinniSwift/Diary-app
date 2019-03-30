@@ -32,8 +32,10 @@ class ViewController: UIViewController {
         // for the unwind segue in DiaryMain storyboard
     }
 
+    @IBOutlet weak var alertViewButton: UIButton!
     @IBAction func viewAlertViewControllerButton(_ sender: UIButton) {
         delegate?.handleSideToggle()
+        NotificationCenter.default.post(name: .didExpand, object: nil)
     }
     
     override func viewDidLoad() {
@@ -50,7 +52,6 @@ class ViewController: UIViewController {
         
 //        set it to the diary page of the day when opened
 //        calendarView.selectDates([Date()])
-        
         
     }
 
