@@ -40,6 +40,7 @@ class NotificationCenterHelper {
         handleCoreData(notification: content, date: date)
     }
     
+    
     // TODO: Create removeNotification function.
     // TODO: remove reminder from the reminders array, reload table view
     // TODO: remove from core data
@@ -52,9 +53,6 @@ class NotificationCenterHelper {
     
     
     class func handleCoreData(notification: UNMutableNotificationContent, date: Date) {
-        // get note at date that user set the notification to
-        let note = CoreDataHelper.retrieveNote().filter { $0.date == date.toString() }
-        let firstNote = note.first
         
         // create new notification to prepare for adding to array or storing as new array
         let notif = CoreDataHelper.newNotification(date: date.toString())
@@ -63,21 +61,29 @@ class NotificationCenterHelper {
         notif.body = notification.body
         notif.date = date.toString()
         
+        let firstNote = CoreDataHelper.retrieveNote().filter{$0.date == notif.date}.first
+        
         // check if there are any notes saved at the date of when we will call the notification
         if firstNote == nil { // note saved at notification date is nil
-            firstNote?.notifications = NSSet(array: [notif])
+            // WORKS
+            let note = CoreDataHelper.newNote()
+            note.content = nil
+            note.date = date.toString()
+            note.notifications = NSSet(array: [notif])
+            CoreDataHelper.saveNote()
+            
         } else { // there're notes saved at the notification date
             if firstNote?.notifications == nil {
                 // empty notification array
                 firstNote?.notifications = NSSet(array: [notif])
             } else {
                 // existing notifications in array
-                firstNote?.notifications?.adding(notif)
+                var storedNotifs = Array((firstNote?.notifications)!)
+                storedNotifs.append(notif)
+                firstNote?.notifications = NSSet(array: storedNotifs)
             }
         }
         
-        // save and update the note context
-        CoreDataHelper.saveNote()
     }
 }
 
