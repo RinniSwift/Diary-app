@@ -3,7 +3,7 @@
 *iOS app for diary taking. Users are open up to a calendar and can click on each individual day to take notes; including text and images. Users can create reminders that are assigned to chosen date.*
 
 ## Screen Casts
-![screenshots](Images/Screenshots.png)
+<img src="Images/Screenshots.png" width="700" height="400" />
 
 ## Color Scheme
 ![color swatches](Images/colorSwatches.png)
