@@ -18,8 +18,11 @@
 ## Technologies used
 *Core Data, JTAppleCalendar Library*
 
-##### Core Data
+#### Core Data
 The app uses Core Data framework as persistent data. Storing text, images, and reminders within each date stored under the Note entity with a one to many relationship with the Notification entity.
+
+#### JTAppleCalendar
+The app integrates JTAppleCalendar library by installing CocoaPods. JTAppleCalendar allows cutomizable calendars. Read more on their [GitHub](https://github.com/patchthecode/JTAppleCalendar)
 
 
 ---
