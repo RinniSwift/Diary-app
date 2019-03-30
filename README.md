@@ -5,7 +5,7 @@
 ## Screen Casts
 ![screenshots](Images/Screenshots.png)
 
-#### Color Scheme
+## Color Scheme
 ![color swatches](Images/colorSwatches.png)
 
 1. Purple App Color: #8A89F0
