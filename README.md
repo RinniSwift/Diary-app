@@ -15,6 +15,14 @@
 5. Main text color: #6A6A6B
 6. Lighter text color: #AAAAAA
 
+## Technologies used
+*Core Data, JTAppleCalendar Library*
+
+##### Core Data
+The app uses Core Data framework as persistent data. Storing text, images, and reminders within each date stored under the Note entity with a one to many relationship with the Notification entity.
+
+
+---
 ### Contact Me
 **Rinni Swift** *iOS Developer, UI and UX designer*\
 Check my [GitHub profile](https://github.com/RinniSwift)\
