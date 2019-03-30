@@ -37,10 +37,11 @@ class AlertViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         expandingListeners()
+        tableView.delegate = self
+        tableView.dataSource = self
         // TODO: populate the table view with all retrieved notifications
     }
     
-    //TODO: create a notification listener when the alertViewController is expanded.
     func expandingListeners() {
         NotificationCenter.default.addObserver(self, selector: #selector(didExpand(_:)), name: .didExpand, object: nil)
     }
@@ -50,8 +51,29 @@ class AlertViewController: UIViewController {
         // TODO: reload table view controller
     }
     
-    func getNotifications() {
-        let allNot = CoreDataHelper.retrieveNotifications()
-        print(allNot.count)
+    func getAllNotifications() -> [NotificationEntity] {
+        return CoreDataHelper.retrieveNotifications()
     }
 }
+
+extension AlertViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "alertCell") as! AlertTableViewCell
+        return cell
+    }
+    
+}
+
+extension AlertViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+}
+
+
