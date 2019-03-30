@@ -10,7 +10,14 @@ import UIKit
 import UserNotifications
 
 class AlertViewController: UIViewController {
-
+    
+    // MARK: - Variables
+    var allReminders: [NotificationEntity] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,8 +33,6 @@ class AlertViewController: UIViewController {
                 let notif = notif as! NotificationEntity
                 print(notif.title)
             }
-            
-            print("reminders: \(NotificationCenterHelper.reminders.count)")
         })
         
     }
@@ -39,7 +44,8 @@ class AlertViewController: UIViewController {
         expandingListeners()
         tableView.delegate = self
         tableView.dataSource = self
-        // TODO: populate the table view with all retrieved notifications
+        
+        allReminders = getAllNotifications()
     }
     
     func expandingListeners() {
@@ -51,18 +57,21 @@ class AlertViewController: UIViewController {
         // TODO: reload table view controller
     }
     
-    func getAllNotifications() -> [NotificationEntity] {
+    func getAllNotifications() -> [NotificationEntity]{
         return CoreDataHelper.retrieveNotifications()
     }
 }
 
 extension AlertViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return allReminders.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "alertCell") as! AlertTableViewCell
+        let reminderAtIndex = allReminders[indexPath.item]
+        cell.alertTitleLabel.text = reminderAtIndex.title
+        cell.alertDateLabel.text = reminderAtIndex.date
         return cell
     }
     
@@ -71,7 +80,7 @@ extension AlertViewController: UITableViewDataSource {
 extension AlertViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 65
     }
     
 }
