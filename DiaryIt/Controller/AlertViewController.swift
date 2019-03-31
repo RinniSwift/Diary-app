@@ -20,62 +20,55 @@ class AlertViewController: UIViewController {
     // MARK: - Actions
     @IBAction func addReminder(_ sender: UIButton) {
         
-        let addedNotif = NotificationCenterHelper.addNotification()
-        allReminders.append(addedNotif)
+        let newNotif = NotificationCenterHelper.addNotification()
+        allReminders.append(newNotif)
         tableView.reloadData()
         
-        // TEST:
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-            let this = CoreDataHelper.retrieveNote().filter{ $0.date == "30 March"}.first
-            print("TEST: All notifs after 1.5 seconds \(CoreDataHelper.retrieveNotifications().count)")
-        })
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8, execute: {
-            let this = CoreDataHelper.retrieveNote().filter{ $0.date == "30 March"}.first
-            print("TEST: All notifs after 6 seconds \(CoreDataHelper.retrieveNotifications().count)")
-        })
     }
     
     // MARK: - Variables
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         expandingListeners()
+        
         tableView.delegate = self
         tableView.dataSource = self
         
-        guard getAllNotifications().count >= 1 else {
-            tableView.reloadData()
-            return
-        }
         allReminders = getAllNotifications()
-        
     }
     
     func expandingListeners() {
         NotificationCenter.default.addObserver(self, selector: #selector(didExpand(_:)), name: .didExpand, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didDeleteNotif(_:)), name: .didDeleteNotif, object: [NotificationEntity].self)
+        NotificationCenter.default.addObserver(self, selector: #selector(didDeleteNotif(_:)), name: .didDeleteNotif, object: nil)
     }
     
     @objc func didExpand(_ notification: Notification) {
-        tableView.reloadData()
     }
     
     @objc func didDeleteNotif(_ notification: Notification) {
-        allReminders = notification.object as! [NotificationEntity]
+        // TODO: When notification is shown.. do something
+        let timeOfNotification = notification.object as! String
+        allReminders = allReminders.filter{ $0.date != timeOfNotification}
         tableView.reloadData()
+        
+        for item in CoreDataHelper.retrieveNotifications().filter({$0.date == timeOfNotification}) {
+            CoreDataHelper.deleteNotification(notification: item)
+        }
+        
     }
     
     func getAllNotifications() -> [NotificationEntity] {
         return CoreDataHelper.retrieveNotifications()
     }
+    
 }
 
 
-
 extension AlertViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("NUMBER OF ROWS: \(allReminders.count)")
-        print("ITEM IN ROW: \(allReminders.first?.body)")
         return allReminders.count
     }
     
