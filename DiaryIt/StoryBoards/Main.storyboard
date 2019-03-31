@@ -27,6 +27,7 @@
                                 <state key="normal" image="addReminderButtonImg"/>
                                 <connections>
                                     <action selector="addReminder:" destination="lVR-e9-M2k" eventType="touchUpInside" id="JEQ-hf-y7d"/>
+                                    <segue destination="Zyt-0w-rwh" kind="show" id="wPB-oi-JGH"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminders" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UjC-tz-bLp">
@@ -105,12 +106,59 @@
                         <viewLayoutGuide key="safeArea" id="xO8-gq-HaO"/>
                     </view>
                     <connections>
+                        <outlet property="addAlertButton" destination="j6e-dd-bNi" id="q1p-F8-ICY"/>
                         <outlet property="tableView" destination="q5Y-gx-VY4" id="2Wt-a9-niD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ge7-ZN-nvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="912.79999999999995" y="-619.34032983508246"/>
+        </scene>
+        <!--Create Alert Detail View Controller-->
+        <scene sceneID="B6Q-Jt-KC2">
+            <objects>
+                <viewController id="Zyt-0w-rwh" customClass="CreateAlertDetailViewController" customModule="DiaryIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OC6-bJ-7H5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="center" distribution="fillEqually" spacing="95" translatesAutoresizingMaskIntoConstraints="NO" id="i3d-h6-sz4">
+                                <rect key="frame" x="15" y="421" width="345" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcc-Vn-Y9p">
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelButtonTapped:" destination="Zyt-0w-rwh" eventType="touchUpInside" id="Om1-kK-aSE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ge9-f3-yNm">
+                                        <rect key="frame" x="220" y="0.0" width="125" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveButtonTapped:" destination="Zyt-0w-rwh" eventType="touchUpInside" id="BMU-4C-ya2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.98039215690000003" green="0.77647058820000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="OQC-zf-bZu" firstAttribute="bottom" secondItem="i3d-h6-sz4" secondAttribute="bottom" constant="216" id="55l-6D-FNa"/>
+                            <constraint firstItem="OQC-zf-bZu" firstAttribute="trailing" secondItem="i3d-h6-sz4" secondAttribute="trailing" constant="15" id="Rvx-aq-RQR"/>
+                            <constraint firstItem="i3d-h6-sz4" firstAttribute="leading" secondItem="OQC-zf-bZu" secondAttribute="leading" constant="15" id="nKO-eD-h9c"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OQC-zf-bZu"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eri-gs-jfo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KCq-8X-s0Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1670" y="-619"/>
         </scene>
         <!--Ib Calendar Data Source-->
         <scene sceneID="tne-QT-ifu">
