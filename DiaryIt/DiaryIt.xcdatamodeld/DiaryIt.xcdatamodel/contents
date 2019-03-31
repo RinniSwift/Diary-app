@@ -3,7 +3,6 @@
     <entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="Transformable" customClassName="NSAttributedString" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="notifications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NotificationEntity" syncable="YES"/>
     </entity>
     <entity name="NotificationEntity" representedClassName="NotificationEntity" syncable="YES" codeGenerationType="class">
         <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
@@ -12,7 +11,7 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Note" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Note" positionX="-63" positionY="-18" width="128" height="75"/>
         <element name="NotificationEntity" positionX="-63" positionY="0" width="128" height="105"/>
     </elements>
 </model>
