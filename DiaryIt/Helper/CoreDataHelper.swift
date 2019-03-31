@@ -22,16 +22,6 @@ struct CoreDataHelper {
         return context
     }()
     
-    static func newNote() -> Note {
-        let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context) as! Note
-        return note
-    }
-    
-    static func newNotification(date: String) -> NotificationEntity {
-        let notification = NSEntityDescription.insertNewObject(forEntityName: "NotificationEntity", into: context) as! NotificationEntity
-        return notification
-    }
-    
     static func saveNote() {
         do {
             try context.save()
@@ -40,6 +30,12 @@ struct CoreDataHelper {
         }
     }
     
+    // note handling
+    static func newNote() -> Note {
+        let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context) as! Note
+        return note
+    }
+
     static func deleteNote(note: Note) {
         context.delete(note)
         saveNote()
@@ -57,6 +53,8 @@ struct CoreDataHelper {
         }
     }
     
+
+    // local notification handling
     static func retrieveNotifications() -> [NotificationEntity] {
         do {
             let fetchRequest = NSFetchRequest<NotificationEntity>(entityName: "NotificationEntity")
@@ -66,5 +64,15 @@ struct CoreDataHelper {
             print(error.localizedDescription)
             return []
         }
+    }
+    
+    static func newNotification() -> NotificationEntity {
+        let notification = NSEntityDescription.insertNewObject(forEntityName: "NotificationEntity", into: context) as! NotificationEntity
+        return notification
+    }
+    
+    static func deleteNotification(notification: NotificationEntity) {
+        context.delete(notification)
+        saveNote()
     }
 }
