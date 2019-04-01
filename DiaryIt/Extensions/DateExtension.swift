@@ -11,7 +11,7 @@ import UIKit
 
 extension Date{
     
-    func toString() -> String{
+    func toString() -> String{  // "31 March"
         let formatter = DateFormatter()
         // initially set the format based on your datepicker date / server String
         formatter.dateFormat = "yyyy MMMM dd"
@@ -25,5 +25,13 @@ extension Date{
         let myStringafd = formatter.string(from: yourDate!)
         
         return myStringafd
+    }
+    
+    func toHourMinute() -> String { // "03.30 PM"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm a"
+        
+        let string = formatter.string(from: self)
+        return string
     }
 }
