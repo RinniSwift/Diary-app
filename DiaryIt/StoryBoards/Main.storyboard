@@ -218,6 +218,9 @@
                                                 <state key="normal" title="22, March">
                                                     <color key="titleColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="Lwi-DY-zOf" kind="show" id="i1e-Lk-pte"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWn-S7-AD1">
                                                 <rect key="frame" x="149.5" y="0.0" width="129.5" height="30"/>
@@ -273,10 +276,10 @@
             </objects>
             <point key="canvasLocation" x="1669.5999999999999" y="-619.34032983508246"/>
         </scene>
-        <!--View Controller-->
+        <!--Date Picker View Controller-->
         <scene sceneID="kSh-c8-xwf">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="Lwi-DY-zOf" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="Lwi-DY-zOf" customClass="DatePickerViewController" customModule="DiaryIt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tWP-Xc-hRt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -289,6 +292,9 @@
                                         <date key="date" timeIntervalSinceReferenceDate="575861237.26667094">
                                             <!--2019-04-02 01:27:17 +0000-->
                                         </date>
+                                        <connections>
+                                            <action selector="dateValueChanged:" destination="Lwi-DY-zOf" eventType="valueChanged" id="WKY-33-c57"/>
+                                        </connections>
                                     </datePicker>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="95" translatesAutoresizingMaskIntoConstraints="NO" id="0g1-nG-X9k">
                                         <rect key="frame" x="15" y="360" width="279" height="30"/>
@@ -296,15 +302,21 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKK-um-Xml">
                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="30"/>
                                                 <state key="normal" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancelButtonTapped:" destination="Lwi-DY-zOf" eventType="touchUpInside" id="Yx4-l7-JFT"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cmm-3W-hMV">
                                                 <rect key="frame" x="187" y="0.0" width="92" height="30"/>
                                                 <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <segue destination="R3c-jq-1Qe" kind="unwind" unwindAction="unwindToCreateAlertViewController:" id="cYq-uX-Jum"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="3cO-aJ-QmM"/>
                                     <constraint firstItem="0g1-nG-X9k" firstAttribute="top" secondItem="FOY-Cq-QxG" secondAttribute="bottom" constant="55" id="QGr-6l-9IQ"/>
@@ -314,6 +326,11 @@
                                     <constraint firstItem="FOY-Cq-QxG" firstAttribute="leading" secondItem="gms-QE-rOH" secondAttribute="leading" id="m8s-Jc-udt"/>
                                     <constraint firstItem="0g1-nG-X9k" firstAttribute="leading" secondItem="gms-QE-rOH" secondAttribute="leading" constant="15" id="zFx-8T-iUf"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -325,10 +342,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y0Z-wa-Y8P"/>
                     </view>
+                    <connections>
+                        <outlet property="datePicker" destination="FOY-Cq-QxG" id="wFq-QZ-EBF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MWG-nf-kJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="R3c-jq-1Qe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2772" y="-282"/>
+            <point key="canvasLocation" x="2772" y="-236"/>
         </scene>
         <!--Time Picker View Controller-->
         <scene sceneID="fDr-fp-rXH">
@@ -371,7 +392,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="EwR-aa-e4G" firstAttribute="leading" secondItem="c9Y-cx-LJH" secondAttribute="leading" constant="15" id="4r4-sU-kO6"/>
                                     <constraint firstAttribute="bottom" secondItem="EwR-aa-e4G" secondAttribute="bottom" constant="10" id="C2s-Rw-NKD"/>
