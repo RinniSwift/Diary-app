@@ -9,22 +9,25 @@
 import UIKit
 
 class DatePickerViewController: UIViewController {
+    
+    // MARK: - Variables
+    var dateSelected: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Outlets
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
+    // MARK: - Actions
+    @IBAction func dateValueChanged(_ sender: UIDatePicker) {
+        dateSelected = datePicker.date.toString()
     }
-    */
-
+    
+    @IBAction func cancelButtonTapped(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
