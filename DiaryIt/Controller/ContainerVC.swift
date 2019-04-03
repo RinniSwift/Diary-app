@@ -33,7 +33,7 @@ class ContainerViewC: UIViewController {
         centerViewController.didMove(toParentViewController: self)
     }
     
-    func configureRedViewController() {
+    func configureAlertViewController() {
         if alertViewController == nil {
             alertViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "alertViewID") as! AlertViewController
             view.insertSubview(alertViewController.view, at: 0)
@@ -83,7 +83,8 @@ extension ContainerViewC: CalendarControllerDelegate {
     
     func handleSideToggle() {
         if !isExpanded {
-            configureRedViewController()
+            configureAlertViewController()
+            print("is expanding")
         }
         isExpanded = !isExpanded
         showAlertViewController(shouldExpand: isExpanded)
