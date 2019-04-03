@@ -219,7 +219,7 @@
                                                     <color key="titleColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="Lwi-DY-zOf" kind="show" id="i1e-Lk-pte"/>
+                                                    <action selector="dateButton:" destination="Zyt-0w-rwh" eventType="touchUpInside" id="Ogc-mL-rh3"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWn-S7-AD1">
@@ -228,7 +228,7 @@
                                                     <color key="titleColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="W2S-HW-fvZ" kind="show" id="jwS-FW-SVV"/>
+                                                    <action selector="timeButtonTapped:" destination="Zyt-0w-rwh" eventType="touchUpInside" id="avT-Un-6M4"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -279,7 +279,7 @@
         <!--Date Picker View Controller-->
         <scene sceneID="kSh-c8-xwf">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="Lwi-DY-zOf" customClass="DatePickerViewController" customModule="DiaryIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="datePickerViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="Lwi-DY-zOf" customClass="DatePickerViewController" customModule="DiaryIt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tWP-Xc-hRt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -354,7 +354,7 @@
         <!--Time Picker View Controller-->
         <scene sceneID="fDr-fp-rXH">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="W2S-HW-fvZ" customClass="TimePickerViewController" customModule="DiaryIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="timePickerViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="W2S-HW-fvZ" customClass="TimePickerViewController" customModule="DiaryIt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cv7-cj-FFn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
