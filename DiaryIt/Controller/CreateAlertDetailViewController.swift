@@ -37,6 +37,7 @@ class CreateAlertDetailViewController: UIViewController {
         // TODO: Instantiate the timePickerViewController and set the date the one in the timeButton
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "timePickerViewController") as! TimePickerViewController
+        controller.dateSended = timeButton.titleLabel?.text
         self.present(controller, animated: true, completion: nil)
     }
     @IBAction func dateButton(_ sender: UIButton) {
