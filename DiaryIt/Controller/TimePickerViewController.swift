@@ -12,13 +12,11 @@ class TimePickerViewController: UIViewController {
     
     // MARK: - Variables
     var dateSelected: String = ""
-    var dateSended: String? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if dateSended != nil {
-            setDatePickerDate(dateLabelString: dateSended!)
-        }
+        
+        setDatePickerDate(dateLabelString: dateSelected)
     }
     
     // MARK: - Outlets
