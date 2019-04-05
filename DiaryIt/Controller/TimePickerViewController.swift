@@ -9,14 +9,16 @@
 import UIKit
 
 class TimePickerViewController: UIViewController {
-    // TODO: Create unwind segue to move data back to
     
     // MARK: - Variables
     var dateSelected: String = ""
+    var dateSended: String? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if dateSended != nil {
+            setDatePickerDate(dateLabelString: dateSended!)
+        }
     }
     
     // MARK: - Outlets
@@ -34,4 +36,13 @@ class TimePickerViewController: UIViewController {
         dateSelected = datePicker.date.toHourMinute()
     }
     
+    func setDatePickerDate(dateLabelString: String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let droppedString = String(dateLabelString.dropLast(3))
+        let date = dateFormatter.date(from: droppedString)
+        
+        datePicker.date = date!
+        dateSelected = dateLabelString
+    }
 }
