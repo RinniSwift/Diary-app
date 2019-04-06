@@ -11,4 +11,6 @@ import Foundation
 extension Notification.Name {
     static let didExpand = Notification.Name("didExpand")
     static let didDeleteNotif = Notification.Name("didDeleteNotif")
+    static let didAddTime = Notification.Name("didAddTime")
+    static let didAddDate = Notification.Name("didAddDate")
 }
