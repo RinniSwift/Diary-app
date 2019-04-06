@@ -9,12 +9,40 @@
 import UIKit
 
 class CreateAlertDetailViewController: UIViewController {
-    // TODO: Maybe when users click on the date/time label, it changes the date picker.
     
+    var timeDateCurrent: DateComponents? = nil  // sets value only when user clicks save on the timePickerViewController
+    var dateDateCurrent: DateComponents? = nil  // sets value only when user clicks save on the datePickerViewController
+    
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var subtitleTextField: UITextField!
+    @IBOutlet weak var bodyTextField: UITextField!
     
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+        
+        guard titleTextField.text != "" && subtitleTextField.text != "" && bodyTextField.text != "" else {
+            print("handle empty textFields")
+            return
+        }
+        
+        // havent set time
+        if timeDateCurrent == nil || dateDateCurrent == nil {
+            let notif = NotificationCenterHelper.addNotificationWithTime(title: titleTextField.text!, subtitle: subtitleTextField.text!, body: bodyTextField.text!, date: Date(timeIntervalSinceNow: 3))
+            // TODO: send notification object to alertViewController to append to the allReminders array
+            
+        } else {    // have set time
+            var dateComponents = DateComponents()
+            dateComponents.year = dateDateCurrent?.year
+            dateComponents.month = dateDateCurrent?.month
+            dateComponents.day = dateDateCurrent?.day
+            dateComponents.hour = timeDateCurrent?.hour
+            dateComponents.minute = timeDateCurrent?.minute
+            let setDate = Calendar.current.date(from: dateComponents)
+            
+            let notif = NotificationCenterHelper.addNotificationWithTime(title: titleTextField.text!, subtitle: subtitleTextField.text!, body: bodyTextField.text!, date: setDate!)
+            // TODO: send notification object to alertViewController to append to the allReminders array
+        }
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
@@ -34,12 +62,12 @@ class CreateAlertDetailViewController: UIViewController {
     }
     
     @IBAction func timeButtonTapped(_ sender: UIButton) {
-        // TODO: Instantiate the timePickerViewController and set the date the one in the timeButton
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "timePickerViewController") as! TimePickerViewController
         controller.dateSelected = (timeButton.titleLabel?.text)!
         self.present(controller, animated: true, completion: nil)
     }
+
     @IBAction func dateButton(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "datePickerViewController") as! DatePickerViewController
@@ -54,6 +82,25 @@ class CreateAlertDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        dateInfoListeners()
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    
+    func dateInfoListeners() {
+        NotificationCenter.default.addObserver(self, selector: #selector(addedTimeDateComponents(notification: )), name: .didAddTime, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addedDateDateComponents(notification: )), name: .didAddDate, object: nil)
     }
 
+    @objc func addedTimeDateComponents(notification: Notification) {
+        timeDateCurrent = (notification.object as! DateComponents)
+    }
+    
+    @objc func addedDateDateComponents(notification: Notification) {
+        dateDateCurrent = (notification.object as! DateComponents)
+    }
 }
