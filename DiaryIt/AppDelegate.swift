@@ -37,8 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .badge, .sound])
         
+        completionHandler([.alert, .badge, .sound])
         NotificationCenter.default.post(name: .didDeleteNotif, object: Date().toString())
     }
 

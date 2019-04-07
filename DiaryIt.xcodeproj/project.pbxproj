@@ -8,28 +8,48 @@
 
 /* Begin PBXBuildFile section */
 		3F042D33FBB6B49495AB60BB /* Pods_DiaryIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85423F73570C79B35DBF6904 /* Pods_DiaryIt.framework */; };
-		A437C5CB217904F7003430E0 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A437C5CA217904F7003430E0 /* Notes.swift */; };
+		A41D86A22248080800EAA190 /* ImagePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41D86A12248080800EAA190 /* ImagePopUpViewController.swift */; };
+		A41D86A72248354000EAA190 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41D86A62248354000EAA190 /* ImageExtension.swift */; };
+		A4251E07224970DF00ED70C5 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4251E06224970DF00ED70C5 /* AlertViewController.swift */; };
+		A43305E2224FE51C0051076D /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43305E1224FE51C0051076D /* NotificationExtension.swift */; };
+		A43305E4224FF3310051076D /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43305E3224FF3310051076D /* AlertTableViewCell.swift */; };
 		A437C5CD21794E22003430E0 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A437C5CC21794E22003430E0 /* CoreDataHelper.swift */; };
 		A44CBC402178195A00B95854 /* DiaryMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44CBC3F2178195A00B95854 /* DiaryMain.swift */; };
+		A44F4C56225129E8005D1C1A /* CreateAlertDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44F4C55225129E8005D1C1A /* CreateAlertDetailViewController.swift */; };
 		A45C41C721768C160071A7D7 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C41C621768C160071A7D7 /* CustomCell.swift */; };
 		A45C41CB2176A5030071A7D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A45C41CA2176A5030071A7D7 /* Main.storyboard */; };
+		A45D0FD12252FF7D00BD403F /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45D0FD02252FF7D00BD403F /* TimePickerViewController.swift */; };
+		A48A90D6224568F000A7BFF8 /* NSStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48A90D5224568F000A7BFF8 /* NSStringExtension.swift */; };
+		A4AA9B8522532EF80067EF6B /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AA9B8422532EF80067EF6B /* DatePickerViewController.swift */; };
 		A4AD47E421766BD0006E9ABE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD47E321766BD0006E9ABE /* AppDelegate.swift */; };
 		A4AD47E621766BD0006E9ABE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD47E521766BD0006E9ABE /* ViewController.swift */; };
 		A4AD47EC21766BD0006E9ABE /* DiaryIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A4AD47EA21766BD0006E9ABE /* DiaryIt.xcdatamodeld */; };
 		A4AD47EE21766BD1006E9ABE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4AD47ED21766BD1006E9ABE /* Assets.xcassets */; };
 		A4AD47F121766BD1006E9ABE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4AD47EF21766BD1006E9ABE /* LaunchScreen.storyboard */; };
-		A4AD47FA21766CFA006E9ABE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD47F921766CFA006E9ABE /* Constants.swift */; };
-		A4AD47FC21767307006E9ABE /* GradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD47FB21767307006E9ABE /* GradientBackground.swift */; };
+		A4AD47FA21766CFA006E9ABE /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD47F921766CFA006E9ABE /* ColorExtension.swift */; };
+		A4AD47FC21767307006E9ABE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD47FB21767307006E9ABE /* ViewExtension.swift */; };
+		A4D028602249B66500A4E369 /* NotificationCenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D0285F2249B66500A4E369 /* NotificationCenterHelper.swift */; };
+		A4D028622249C56900A4E369 /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D028612249C56900A4E369 /* ContainerVC.swift */; };
+		A4D0286B2249FE8300A4E369 /* CalendarControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D0286A2249FE8300A4E369 /* CalendarControllerDelegate.swift */; };
+		A4E2A13322435EB700F4A694 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2A13222435EB700F4A694 /* DateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		48028C051D8F050EB161C742 /* Pods-DiaryIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DiaryIt/Pods-DiaryIt.debug.xcconfig"; sourceTree = "<group>"; };
 		85423F73570C79B35DBF6904 /* Pods_DiaryIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiaryIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A437C5CA217904F7003430E0 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
+		A41D86A12248080800EAA190 /* ImagePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopUpViewController.swift; sourceTree = "<group>"; };
+		A41D86A62248354000EAA190 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
+		A4251E06224970DF00ED70C5 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		A43305E1224FE51C0051076D /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		A43305E3224FF3310051076D /* AlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
 		A437C5CC21794E22003430E0 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		A44CBC3F2178195A00B95854 /* DiaryMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMain.swift; sourceTree = "<group>"; };
+		A44F4C55225129E8005D1C1A /* CreateAlertDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAlertDetailViewController.swift; sourceTree = "<group>"; };
 		A45C41C621768C160071A7D7 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		A45C41CA2176A5030071A7D7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A45D0FD02252FF7D00BD403F /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
+		A48A90D5224568F000A7BFF8 /* NSStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStringExtension.swift; sourceTree = "<group>"; };
+		A4AA9B8422532EF80067EF6B /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		A4AD47E021766BD0006E9ABE /* DiaryIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiaryIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4AD47E321766BD0006E9ABE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4AD47E521766BD0006E9ABE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,8 +57,12 @@
 		A4AD47ED21766BD1006E9ABE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4AD47F021766BD1006E9ABE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4AD47F221766BD1006E9ABE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A4AD47F921766CFA006E9ABE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		A4AD47FB21767307006E9ABE /* GradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackground.swift; sourceTree = "<group>"; };
+		A4AD47F921766CFA006E9ABE /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		A4AD47FB21767307006E9ABE /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		A4D0285F2249B66500A4E369 /* NotificationCenterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterHelper.swift; sourceTree = "<group>"; };
+		A4D028612249C56900A4E369 /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
+		A4D0286A2249FE8300A4E369 /* CalendarControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarControllerDelegate.swift; sourceTree = "<group>"; };
+		A4E2A13222435EB700F4A694 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		DCBAB3D1B22D450EF312A5C4 /* Pods-DiaryIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-DiaryIt/Pods-DiaryIt.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,12 +96,22 @@
 			path = StoryBoards;
 			sourceTree = "<group>";
 		};
+		A458688E2244324C0009F0EB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A4E2A13222435EB700F4A694 /* DateExtension.swift */,
+				A4AD47FB21767307006E9ABE /* ViewExtension.swift */,
+				A4AD47F921766CFA006E9ABE /* ColorExtension.swift */,
+				A48A90D5224568F000A7BFF8 /* NSStringExtension.swift */,
+				A41D86A62248354000EAA190 /* ImageExtension.swift */,
+				A43305E1224FE51C0051076D /* NotificationExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A4AD47D721766BD0006E9ABE = {
 			isa = PBXGroup;
 			children = (
-				A4AD47FD21767818006E9ABE /* Helper */,
-				A4AD47F821766CD4006E9ABE /* ExtendedContant */,
-				A444A3012177A8FF008E5BE1 /* StoryBoards */,
 				A4AD47E221766BD0006E9ABE /* DiaryIt */,
 				A4AD47E121766BD0006E9ABE /* Products */,
 				65DBFDA6BEA12C2F20A8C1C9 /* Pods */,
@@ -96,9 +130,13 @@
 		A4AD47E221766BD0006E9ABE /* DiaryIt */ = {
 			isa = PBXGroup;
 			children = (
+				A4D028692249FE6400A4E369 /* Model */,
+				A458688E2244324C0009F0EB /* Extensions */,
+				A4E2A1302242F38500F4A694 /* Controller */,
+				A4E2A12F2242F37D00F4A694 /* View */,
+				A4AD47FD21767818006E9ABE /* Helper */,
+				A444A3012177A8FF008E5BE1 /* StoryBoards */,
 				A4AD47E321766BD0006E9ABE /* AppDelegate.swift */,
-				A4AD47E521766BD0006E9ABE /* ViewController.swift */,
-				A44CBC3F2178195A00B95854 /* DiaryMain.swift */,
 				A4AD47ED21766BD1006E9ABE /* Assets.xcassets */,
 				A4AD47F221766BD1006E9ABE /* Info.plist */,
 				A4AD47EA21766BD0006E9ABE /* DiaryIt.xcdatamodeld */,
@@ -106,23 +144,45 @@
 			path = DiaryIt;
 			sourceTree = "<group>";
 		};
-		A4AD47F821766CD4006E9ABE /* ExtendedContant */ = {
-			isa = PBXGroup;
-			children = (
-				A4AD47F921766CFA006E9ABE /* Constants.swift */,
-				A437C5CA217904F7003430E0 /* Notes.swift */,
-			);
-			path = ExtendedContant;
-			sourceTree = "<group>";
-		};
 		A4AD47FD21767818006E9ABE /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				A4AD47FB21767307006E9ABE /* GradientBackground.swift */,
-				A45C41C621768C160071A7D7 /* CustomCell.swift */,
 				A437C5CC21794E22003430E0 /* CoreDataHelper.swift */,
+				A4D0285F2249B66500A4E369 /* NotificationCenterHelper.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		A4D028692249FE6400A4E369 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A4D0286A2249FE8300A4E369 /* CalendarControllerDelegate.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A4E2A12F2242F37D00F4A694 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A45C41C621768C160071A7D7 /* CustomCell.swift */,
+				A43305E3224FF3310051076D /* AlertTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4E2A1302242F38500F4A694 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A4AD47E521766BD0006E9ABE /* ViewController.swift */,
+				A44CBC3F2178195A00B95854 /* DiaryMain.swift */,
+				A41D86A12248080800EAA190 /* ImagePopUpViewController.swift */,
+				A4D028612249C56900A4E369 /* ContainerVC.swift */,
+				A4251E06224970DF00ED70C5 /* AlertViewController.swift */,
+				A44F4C55225129E8005D1C1A /* CreateAlertDetailViewController.swift */,
+				A45D0FD02252FF7D00BD403F /* TimePickerViewController.swift */,
+				A4AA9B8422532EF80067EF6B /* DatePickerViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		E874961110CCFE77125749D9 /* Frameworks */ = {
@@ -245,15 +305,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4AD47FC21767307006E9ABE /* GradientBackground.swift in Sources */,
+				A4AD47FC21767307006E9ABE /* ViewExtension.swift in Sources */,
+				A4D028602249B66500A4E369 /* NotificationCenterHelper.swift in Sources */,
+				A4AA9B8522532EF80067EF6B /* DatePickerViewController.swift in Sources */,
+				A41D86A22248080800EAA190 /* ImagePopUpViewController.swift in Sources */,
 				A4AD47E621766BD0006E9ABE /* ViewController.swift in Sources */,
 				A4AD47E421766BD0006E9ABE /* AppDelegate.swift in Sources */,
+				A48A90D6224568F000A7BFF8 /* NSStringExtension.swift in Sources */,
+				A45D0FD12252FF7D00BD403F /* TimePickerViewController.swift in Sources */,
+				A4E2A13322435EB700F4A694 /* DateExtension.swift in Sources */,
+				A4D028622249C56900A4E369 /* ContainerVC.swift in Sources */,
+				A4D0286B2249FE8300A4E369 /* CalendarControllerDelegate.swift in Sources */,
+				A43305E4224FF3310051076D /* AlertTableViewCell.swift in Sources */,
 				A4AD47EC21766BD0006E9ABE /* DiaryIt.xcdatamodeld in Sources */,
 				A44CBC402178195A00B95854 /* DiaryMain.swift in Sources */,
+				A43305E2224FE51C0051076D /* NotificationExtension.swift in Sources */,
+				A41D86A72248354000EAA190 /* ImageExtension.swift in Sources */,
 				A45C41C721768C160071A7D7 /* CustomCell.swift in Sources */,
 				A437C5CD21794E22003430E0 /* CoreDataHelper.swift in Sources */,
-				A4AD47FA21766CFA006E9ABE /* Constants.swift in Sources */,
-				A437C5CB217904F7003430E0 /* Notes.swift in Sources */,
+				A4251E07224970DF00ED70C5 /* AlertViewController.swift in Sources */,
+				A44F4C56225129E8005D1C1A /* CreateAlertDetailViewController.swift in Sources */,
+				A4AD47FA21766CFA006E9ABE /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

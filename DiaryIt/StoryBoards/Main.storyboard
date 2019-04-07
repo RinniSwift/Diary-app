@@ -215,7 +215,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceg-ee-nDj">
                                                 <rect key="frame" x="0.0" y="0.0" width="129.5" height="30"/>
-                                                <state key="normal" title="22, March">
+                                                <state key="normal" title="22 March">
                                                     <color key="titleColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -268,8 +268,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="eri-gs-jfo"/>
                     <connections>
+                        <outlet property="bodyTextField" destination="SdG-Bd-T8A" id="kPF-3F-YxR"/>
                         <outlet property="dateButton" destination="ceg-ee-nDj" id="1aM-Jf-oct"/>
+                        <outlet property="subtitleTextField" destination="PR8-ei-qlb" id="mr0-5Q-bSm"/>
                         <outlet property="timeButton" destination="hWn-S7-AD1" id="fnO-b4-Je1"/>
+                        <outlet property="titleTextField" destination="u8K-vE-Zln" id="ATZ-Y3-6JI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCq-8X-s0Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -310,6 +313,7 @@
                                                 <rect key="frame" x="187" y="0.0" width="92" height="30"/>
                                                 <state key="normal" title="Save"/>
                                                 <connections>
+                                                    <action selector="saveButtonTapped:" destination="Lwi-DY-zOf" eventType="touchUpInside" id="lHI-2L-SDj"/>
                                                     <segue destination="R3c-jq-1Qe" kind="unwind" unwindAction="unwindToCreateAlertViewController:" id="cYq-uX-Jum"/>
                                                 </connections>
                                             </button>

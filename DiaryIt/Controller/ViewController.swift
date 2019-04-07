@@ -59,8 +59,6 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-
-    
     func setUpCalendarView() {
         
         // makes the whole cell the outer most part of the cell

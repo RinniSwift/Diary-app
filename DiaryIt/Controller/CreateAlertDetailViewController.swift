@@ -26,12 +26,11 @@ class CreateAlertDetailViewController: UIViewController {
             return
         }
         
-        // havent set time
         if timeDateCurrent == nil || dateDateCurrent == nil {
             let notif = NotificationCenterHelper.addNotificationWithTime(title: titleTextField.text!, subtitle: subtitleTextField.text!, body: bodyTextField.text!, date: Date(timeIntervalSinceNow: 3))
             // TODO: send notification object to alertViewController to append to the allReminders array
-            
-        } else {    // have set time
+            NotificationCenter.default.post(name: .didAddReminderObject, object: notif)
+        } else {
             var dateComponents = DateComponents()
             dateComponents.year = dateDateCurrent?.year
             dateComponents.month = dateDateCurrent?.month
@@ -41,7 +40,11 @@ class CreateAlertDetailViewController: UIViewController {
             let setDate = Calendar.current.date(from: dateComponents)
             
             let notif = NotificationCenterHelper.addNotificationWithTime(title: titleTextField.text!, subtitle: subtitleTextField.text!, body: bodyTextField.text!, date: setDate!)
-            // TODO: send notification object to alertViewController to append to the allReminders array
+            NotificationCenter.default.post(name: .didAddReminderObject, object: notif)
+            
+            // TEST
+            let allNotifs = CoreDataHelper.retrieveNotifications()
+            print(allNotifs)
         }
     }
     
@@ -85,22 +88,21 @@ class CreateAlertDetailViewController: UIViewController {
         dateInfoListeners()
         
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    
-    
+
     func dateInfoListeners() {
-        NotificationCenter.default.addObserver(self, selector: #selector(addedTimeDateComponents(notification: )), name: .didAddTime, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(addedDateDateComponents(notification: )), name: .didAddDate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addedTimeDateComponents(_: )), name: .didAddTime, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addedDateDateComponents(_: )), name: .didAddDate, object: nil)
     }
 
-    @objc func addedTimeDateComponents(notification: Notification) {
+    @objc func addedTimeDateComponents(_ notification: Notification) {
         timeDateCurrent = (notification.object as! DateComponents)
     }
     
-    @objc func addedDateDateComponents(notification: Notification) {
+    @objc func addedDateDateComponents(_ notification: Notification) {
         dateDateCurrent = (notification.object as! DateComponents)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
