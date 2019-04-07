@@ -13,18 +13,24 @@ class DatePickerViewController: UIViewController {
     // MARK: - Variables
     var dateSelected: String = ""
 
+    // MARK: - Outlets
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setDatePickerDate(dateLabelString: dateSelected)
     }
     
-    // MARK: - Outlets
-    @IBOutlet weak var datePicker: UIDatePicker!
-    
     // MARK: - Actions
     @IBAction func dateValueChanged(_ sender: UIDatePicker) {
         dateSelected = datePicker.date.toString()
+    }
+    
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+        // TODO: create compoments and send dateComponent object to createAlertViewCOntroller
+        let components = Calendar.current.dateComponents([.year, .month, .day], from: datePicker.date)
+        NotificationCenter.default.post(name: .didAddDate, object: components)
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
@@ -32,12 +38,11 @@ class DatePickerViewController: UIViewController {
     }
     
     func setDatePickerDate(dateLabelString: String) {
-        // TODO: create date formatter and set the date picker to equal the date(from: String) format
+        // setting string from datePicker to store in dateSelected var. to send to CreateAlertViewController
+
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd, MMM yyyy"
+        dateFormatter.dateFormat = "dd MMM yyyy"
         let date = dateFormatter.date(from: dateLabelString + " 2019")
-        print(dateSelected)
-        print(date)
         datePicker.date = date!
     }
 }
