@@ -12,7 +12,6 @@ class TimePickerViewController: UIViewController {
     
     // MARK: - Variables
     var dateSelected: String = ""   // maybe not useful to store it as the string since we already send over the time as dateComponents
-    var savedDateComponent: DateComponents? = nil
     
     // MARK: - Outlets
     @IBOutlet weak var datePicker: UIDatePicker!
