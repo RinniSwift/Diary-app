@@ -28,6 +28,7 @@ class DatePickerViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
+        // TODO: create compoments and send dateComponent object to createAlertViewCOntroller
         let components = Calendar.current.dateComponents([.year, .month, .day], from: datePicker.date)
         NotificationCenter.default.post(name: .didAddDate, object: components)
     }

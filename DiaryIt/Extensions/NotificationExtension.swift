@@ -13,5 +13,4 @@ extension Notification.Name {
     static let didDeleteNotif = Notification.Name("didDeleteNotif")
     static let didAddTime = Notification.Name("didAddTime")
     static let didAddDate = Notification.Name("didAddDate")
-    static let didAddReminderObject = Notification.Name("didAddReminderObject")
 }

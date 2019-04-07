@@ -29,40 +29,12 @@ class NotificationCenterHelper {
         
         center.add(request) { err in
             if err != nil {
-                print(err?.localizedDescription as Any)
+                print(err?.localizedDescription)
             }
         }
         
         return saveNotificationToCoreData(notification: content, date: date)
     }
-    
-    
-    class func addNotificationWithTime(title: String, subtitle: String, body: String, date: Date) -> NotificationEntity {
-        
-        let center = UNUserNotificationCenter.current()
-        
-        let content = UNMutableNotificationContent()
-        content.title = title
-        content.subtitle = subtitle
-        content.body = body
-        content.sound = UNNotificationSound.default()
-        
-        let date = date
-        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
-        
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-        let request = UNNotificationRequest(identifier: "content", content: content, trigger: trigger)
-        
-        center.add(request) { err in
-            if err != nil {
-                print(err?.localizedDescription as Any)
-            }
-        }
-            
-        return saveNotificationToCoreData(notification: content, date: date)
-    }
-    
-    
     
     class func saveNotificationToCoreData(notification: UNMutableNotificationContent, date: Date) -> NotificationEntity {
         
