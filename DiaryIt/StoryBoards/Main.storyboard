@@ -50,7 +50,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="283" height="72.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alertIcon" translatesAutoresizingMaskIntoConstraints="NO" id="rUU-1d-eNm">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-notification-100 (2)" translatesAutoresizingMaskIntoConstraints="NO" id="rUU-1d-eNm">
                                                     <rect key="frame" x="15" y="23" width="27" height="27"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="27" id="KTm-vf-8bV"/>
@@ -215,7 +215,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceg-ee-nDj">
                                                 <rect key="frame" x="0.0" y="0.0" width="129.5" height="30"/>
-                                                <state key="normal" title="22, March">
+                                                <state key="normal" title="22 March">
                                                     <color key="titleColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -268,8 +268,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="eri-gs-jfo"/>
                     <connections>
+                        <outlet property="bodyTextField" destination="SdG-Bd-T8A" id="aKZ-cp-xDT"/>
                         <outlet property="dateButton" destination="ceg-ee-nDj" id="1aM-Jf-oct"/>
+                        <outlet property="subtitleTextField" destination="PR8-ei-qlb" id="KJ7-0h-XE1"/>
                         <outlet property="timeButton" destination="hWn-S7-AD1" id="fnO-b4-Je1"/>
+                        <outlet property="titleTextField" destination="u8K-vE-Zln" id="s0h-6n-Y4C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCq-8X-s0Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -750,9 +753,9 @@
     </scenes>
     <resources>
         <image name="addReminderButtonImg" width="76" height="79"/>
-        <image name="alertIcon" width="100" height="100"/>
         <image name="alertLogs" width="96" height="96"/>
         <image name="back" width="100" height="100"/>
+        <image name="icons8-notification-100 (2)" width="100" height="100"/>
         <image name="icons8-screenshot-100" width="100" height="100"/>
         <image name="trash" width="100" height="100"/>
     </resources>

@@ -41,7 +41,7 @@ class DatePickerViewController: UIViewController {
         // setting string from datePicker to store in dateSelected var. to send to CreateAlertViewController
 
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy"
+        dateFormatter.dateFormat = "dd, MMM yyyy"
         let date = dateFormatter.date(from: dateLabelString + " 2019")
         datePicker.date = date!
     }
