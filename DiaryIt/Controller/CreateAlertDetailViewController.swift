@@ -26,12 +26,10 @@ class CreateAlertDetailViewController: UIViewController {
             return
         }
         
-        // havent set time
         if timeDateCurrent == nil || dateDateCurrent == nil {
             let notif = NotificationCenterHelper.addNotificationWithTime(title: titleTextField.text!, subtitle: subtitleTextField.text!, body: bodyTextField.text!, date: Date(timeIntervalSinceNow: 3))
-            // TODO: send notification object to alertViewController to append to the allReminders array
-            
-        } else {    // have set time
+            NotificationCenter.default.post(name: .didAddReminderObject, object: notif)
+        } else {
             var dateComponents = DateComponents()
             dateComponents.year = dateDateCurrent?.year
             dateComponents.month = dateDateCurrent?.month
@@ -41,7 +39,7 @@ class CreateAlertDetailViewController: UIViewController {
             let setDate = Calendar.current.date(from: dateComponents)
             
             let notif = NotificationCenterHelper.addNotificationWithTime(title: titleTextField.text!, subtitle: subtitleTextField.text!, body: bodyTextField.text!, date: setDate!)
-            // TODO: send notification object to alertViewController to append to the allReminders array
+            NotificationCenter.default.post(name: .didAddReminderObject, object: notif)
         }
     }
     
