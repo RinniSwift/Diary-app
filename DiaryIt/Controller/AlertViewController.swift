@@ -42,6 +42,7 @@ class AlertViewController: UIViewController {
     func expandingListeners() {
         NotificationCenter.default.addObserver(self, selector: #selector(didExpand(_:)), name: .didExpand, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didDeleteNotif(_:)), name: .didDeleteNotif, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didAddReminderObject(_:)), name: .didAddReminderObject, object: nil)
     }
     
     @objc func didExpand(_ notification: Notification) {
@@ -56,7 +57,12 @@ class AlertViewController: UIViewController {
         for item in CoreDataHelper.retrieveNotifications().filter({$0.date == timeOfNotification}) {
             CoreDataHelper.deleteNotification(notification: item)
         }
-        
+    }
+    
+    @objc func didAddReminderObject(_ notification: Notification) {
+        let reminderObj = notification.object as! NotificationEntity
+        allReminders.append(reminderObj)
+        tableView.reloadData()
     }
     
     func getAllNotifications() -> [NotificationEntity] {
