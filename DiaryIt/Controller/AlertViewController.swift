@@ -20,10 +20,6 @@ class AlertViewController: UIViewController {
     // MARK: - Actions
     @IBAction func addReminder(_ sender: UIButton) {
         
-        let newNotif = NotificationCenterHelper.addNotification()
-        allReminders.append(newNotif)
-        tableView.reloadData()
-        
     }
     
     // MARK: - Variables
@@ -37,6 +33,7 @@ class AlertViewController: UIViewController {
         tableView.dataSource = self
         
         allReminders = getAllNotifications()
+        removeEarlierNotifications(date: Date())
     }
     
     func expandingListeners() {
@@ -69,6 +66,18 @@ class AlertViewController: UIViewController {
         return CoreDataHelper.retrieveNotifications()
     }
     
+    func removeEarlierNotifications(date: Date) {
+        let allNotifs = CoreDataHelper.retrieveNotifications()
+        // TODO: get date of notifications and remove the ones that are before the date.
+        
+        for notification in allNotifs {
+            let dateValue = notification.date?.stringToDate()
+            if date > dateValue! {  // date has passed
+                CoreDataHelper.deleteNotification(notification: notification)
+            }
+        }
+        tableView.reloadData()
+    }
 }
 
 
@@ -82,10 +91,9 @@ extension AlertViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "alertCell") as! AlertTableViewCell
         let reminderAtIndex = allReminders[indexPath.item]
         cell.alertTitleLabel.text = reminderAtIndex.title
-        cell.alertDateLabel.text = reminderAtIndex.date
+        cell.alertDateLabel.text = reminderAtIndex.date // TODO: change 'toFullDateString' to 'toString' format
         return cell
     }
-    
 }
 
 extension AlertViewController: UITableViewDelegate {
