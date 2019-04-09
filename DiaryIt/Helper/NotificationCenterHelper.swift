@@ -67,7 +67,7 @@ class NotificationCenterHelper {
         notif.title = notification.title
         notif.subtitle = notification.subtitle
         notif.body = notification.body
-        notif.date = date.toString()
+        notif.date = date.toFullDateString()
         
         CoreDataHelper.saveNote()
         return notif
